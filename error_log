@@ -1,0 +1,1 @@
+[15-Oct-2017 17:38:31 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/mtssarlc/public_html/demo/wp-content/themes/mts/index.php on line 1

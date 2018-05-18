@@ -1,0 +1,22 @@
+Form is almost done.
+
+Some issues.
+
+Competencias area.
+
+until the 2 line of items everything ok, from 3rd on the dropdown boxes don't update correctly.
+
+
+Ultima experiencia
+
+If i select "data especifica" it's ok, but if change the value the fiel "data especifica" stays visible. need to go hidden again.
+
+
+Formação
+When adding a new line, When we select "curso" the "instituições" dropdown doesn't appear.
+
+Idiomas
+The field "lingua materna" just shows one time, the rest is like the Competencias...
+only: Idioma  Falar  Ouvir  Ler  Escrever
+
+
