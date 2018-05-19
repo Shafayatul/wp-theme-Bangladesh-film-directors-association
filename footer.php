@@ -114,7 +114,7 @@
           <div class="col-md-4 col-xs-12">
             <div class="footer-widget flickr-widget">
               <h4>Company Slogan<span class="head-line"></span></h4>
-              <p>Manufacturing And Technology Solutions MTS S.A.R.L</p>
+              <p>Bangladesh Film Directors Association</p>
             </div>
           </div>
           <!-- .col-md-3 -->
@@ -126,9 +126,9 @@
             <div class="footer-widget contact-widget">
               <h4>Address<span class="head-line"></span></h4>
               <ul>
-                <li><span>Phone Number:</span> +961 78 999 965</li>
-                <li><span>Email:</span> info@mts-sarl.com</li>
-                <li><span>Website:</span> www.mts-sarl.com</li>
+                <li><span>Phone Number:</span> +45 45 54 </li>
+                <li><span>Email:</span> info@ddddd.com</li>
+                <li><span>Website:</span> www.ddddd.com</li>
               </ul>
             </div>
           </div>
@@ -141,7 +141,7 @@
         <div class="copyright-section">
           <div class="row">
             <div class="col-md-6 ">
-              <p class="dev_name">Copyright © 2017 MTS - Designed &amp; Developed by <a href="http://highqualitysol.com/">High Quality Solution</a></p>
+              <p class="dev_name">Copyright © 2017 MTS - Designed &amp; Developed by <a href="">Dev team</a></p>
             </div>
             <!-- .col-md-6 -->
             <div class="col-md-6">

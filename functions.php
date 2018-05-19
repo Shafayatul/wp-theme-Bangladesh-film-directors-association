@@ -5,40 +5,96 @@
 add_action('init', 'create_post_type_faq'); // Add our HTML5 Blank Custom Post Type
 function create_post_type_faq()
 {
-    register_post_type( 'Slider',                         
+
+    register_post_type( 'Journal',                         
         array(
             'labels' => array(
-                'name' => __( 'Slider' ),
-                'singular_name' => __( 'Slider' ),
+                'name' => __( 'Journal' ),
+                'singular_name' => __( 'Journal' ),
                 'add_new' => __( 'Add New' ),
-                'add_new_item' => __( 'Add New Slider' ),
-                'edit_item' => __( 'Edit Slider' ),
-                'new_item' => __( 'New Slider' ),
-                'view_item' => __( 'View Slider' ),
-                'not_found' => __( 'Sorry, we couldn\'t find the Slider you are looking for.' )
+                'add_new_item' => __( 'Add New Journal' ),
+                'edit_item' => __( 'Edit Journal' ),
+                'new_item' => __( 'New Journal' ),
+                'view_item' => __( 'View Journal' ),
+                'not_found' => __( 'Sorry, we couldn\'t find the Journal you are looking for.' )
                 ),
             'public' => true,
             'publicly_queryable' => true,
             'exclude_from_search' => true,
-            'menu_position' => 6,
             'has_archive' => true,
             'hierarchical' => false, 
-            'menu_icon' => 'dashicons-post-status', 
-            'taxonomies' => array('Slider_category'),
-            'supports' => array( 'title', 'editor', 'thumbnail',  )
-        )
-    );
-    register_post_type( 'Products',                         
+            'capability_type' => 'post',
+            'menu_icon' => 'dashicons-id-alt', 
+            'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields' )
+
+
+
+
+        )       
+    );  
+    register_post_type( 'Events',                         
         array(
             'labels' => array(
-                'name' => __( 'Products' ),
-                'singular_name' => __( 'Products' ),
+                'name' => __( 'Events' ),
+                'singular_name' => __( 'Events' ),
                 'add_new' => __( 'Add New' ),
-                'add_new_item' => __( 'Add New Products' ),
-                'edit_item' => __( 'Edit Products' ),
-                'new_item' => __( 'New Products' ),
-                'view_item' => __( 'View Products' ),
-                'not_found' => __( 'Sorry, we couldn\'t find the Products you are looking for.' )
+                'add_new_item' => __( 'Add New Events' ),
+                'edit_item' => __( 'Edit Events' ),
+                'new_item' => __( 'New Events' ),
+                'view_item' => __( 'View Events' ),
+                'not_found' => __( 'Sorry, we couldn\'t find the Events you are looking for.' )
+                ),
+            'public' => true,
+            'publicly_queryable' => true,
+            'exclude_from_search' => true,
+            'has_archive' => true,
+            'hierarchical' => false, 
+            'capability_type' => 'post',
+            'menu_icon' => 'dashicons-id-alt', 
+            'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields' )
+
+
+
+
+        )       
+    );      
+    register_post_type( 'News',                         
+        array(
+            'labels' => array(
+                'name' => __( 'News' ),
+                'singular_name' => __( 'News' ),
+                'add_new' => __( 'Add New' ),
+                'add_new_item' => __( 'Add New News' ),
+                'edit_item' => __( 'Edit News' ),
+                'new_item' => __( 'New News' ),
+                'view_item' => __( 'View News' ),
+                'not_found' => __( 'Sorry, we couldn\'t find the News you are looking for.' )
+                ),
+            'public' => true,
+            'publicly_queryable' => true,
+            'exclude_from_search' => true,
+            'has_archive' => true,
+            'hierarchical' => false, 
+            'capability_type' => 'post',
+            'menu_icon' => 'dashicons-id-alt', 
+            'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields' )
+
+
+
+
+        )       
+    );      
+    register_post_type( 'Notice',                         
+        array(
+            'labels' => array(
+                'name' => __( 'Notice' ),
+                'singular_name' => __( 'Notice' ),
+                'add_new' => __( 'Add New' ),
+                'add_new_item' => __( 'Add New Notice' ),
+                'edit_item' => __( 'Edit Notice' ),
+                'new_item' => __( 'New Notice' ),
+                'view_item' => __( 'View Notice' ),
+                'not_found' => __( 'Sorry, we couldn\'t find the Notice you are looking for.' )
                 ),
             'public' => true,
             'publicly_queryable' => true,

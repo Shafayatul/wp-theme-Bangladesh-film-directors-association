@@ -18,103 +18,132 @@ $des4 = get_post_meta(get_the_ID(), "Description 4", true);
   <h3><?php _e('404 Error&#58; Not Found'); ?></h3>
 <?php endif; ?>
     <!-- Start Home Page Slider -->
-    <section id="home">
-
-
-      <div class="skdslider">
-
-        <ul id="demo1" class="slides">
-
-          <?php 
-              query_posts(array( 
-                  'post_type' => 'Slider',
-                  'showposts' => 100,
-                  'order'     => 'ASC' 
-              ) );  
-          ?>
-          <?php while (have_posts()) : the_post(); ?>
-          <li>
-            <img src="<?php echo get_the_post_thumbnail_url();?>" />
-            <div class="slide-desc">
-              <h2><?php echo get_the_title();?></h2>
-              <p><?php echo get_the_content(); ?></p>
-            </div>
-          </li>
-          <?php endwhile;?>
-          
-        </ul>
-      </div>
-    </section>
-    <!-- End Home Page Slider -->
-
-    <!-- Start Services Section -->
-    <div class="section service" style="padding-bottom: 0px;">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-md-3 col-sm-12 service-box service-center" data-animation="fadeIn" data-animation-delay="01">
-            <div class="service-icon">
-              <i class="fa fa-rocket icon-large"></i>
-            </div>
-            <div class="service-content">
-              <h4><?php echo $title1;?></h4>
-              <p><?php echo $des1;?></p>
-            </div>
-          </div>
-
-          <div class="col-md-3 col-sm-12 service-box service-center" data-animation="fadeIn" data-animation-delay="02">
-            <div class="service-icon">
-              <i class="fa fa-umbrella icon-large"></i>
-            </div>
-            <div class="service-content">
-              <h4><?php echo $title2;?></h4>
-              <p><?php echo $des2;?></p>
-            </div>
-          </div>  
-
-          <div class="col-md-3 col-sm-12 service-box service-center" data-animation="fadeIn" data-animation-delay="03">
-            <div class="service-icon">
-              <i class="fa fa-scissors icon-large"></i>
-            </div>
-            <div class="service-content">
-              <h4><?php echo $title3;?></h4>
-              <p><?php echo $des3;?></p>
-            </div>
-          </div>  
-
-          <div class="col-md-3 col-sm-12 service-box service-center" data-animation="fadeIn" data-animation-delay="04">
-            <div class="service-icon">
-              <i class="fa fa-wrench icon-large"></i>
-            </div>
-            <div class="service-content">
-              <h4><?php echo $title4;?></h4>
-              <p><?php echo $des4;?></p>
-            </div>
-          </div>  
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <br>
+          <br>
+          <br>
         </div>
-        <!-- .row -->
       </div>
-      <!-- .container -->
+      <div class="row">
+        <div class="col-md-9">
+          <!-- Slider -->
+          <div class="row">
+            <div class="col-md-12">
+              <?php echo do_shortcode('[metaslider id="23"]'); ?>           
+            </div>
+          </div> <!-- slider row -->
+
+          <br>
+          <!-- YOutube links -->
+          <div class="row">
+            <div class="col-md-12">
+              <h2 class="colored-title center-text">Youtube Links</h2>
+            </div>
+            <div class="col-md-12">
+              <?php echo do_shortcode('[wonderplugin_carousel id="1"]'); ?>
+            </div>
+          </div> <!-- youtube row ends -->
+
+
+          <br>
+          <!-- Event links -->
+          <div class="row">
+            <div class="col-md-12">
+              <h2 class="colored-title center-text">Recent Events</h2>
+              <br>
+            </div>
+
+
+            <?php 
+                query_posts(array( 
+                    'post_type' => 'Events',
+                    'showposts' => 3,
+                    'order'     => 'DESC' 
+                ) );  
+            ?>           
+            <?php while (have_posts()) : the_post(); ?> 
+              <div class="col-md-4">
+                <div class="thumbnail">
+                  <a href="<?php echo get_permalink();?>">
+                    <img src="<?php echo get_the_post_thumbnail_url();?>" alt="Lights" style="width:100%">
+                    <div class="caption">
+                      <p><?php echo get_the_title();?></p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            <?php endwhile;?>
+
+
+          </div> <!-- Event row ends -->
+
+
+        </div>
+        <div class="col-md-3">
+          <!-- News -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="side-bar-section">
+                <div class="title-side-bar">
+                  News Feed
+                </div>
+                <?php 
+                    query_posts(array( 
+                        'post_type' => 'News',
+                        'showposts' => 10,
+                        'order'     => 'DESC' 
+                    ) );  
+                ?>           
+                <?php while (have_posts()) : the_post(); ?> 
+                <span class="single-sidebar-news"><a href="<?php echo get_permalink();?>"><?php echo get_the_title();?></a></span>
+                <?php endwhile;?>
+                
+              </div>
+            </div>
+          </div> <!-- News row ends -->
+
+          <br>
+          <br>
+          <br>
+
+          <!-- Events -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="side-bar-section">
+                <div class="title-side-bar">
+                  Notice Board
+                </div>
+                <?php 
+                    query_posts(array( 
+                        'post_type' => 'Notice',
+                        'showposts' => 10,
+                        'order'     => 'DESC' 
+                    ) );  
+                ?>           
+                <?php while (have_posts()) : the_post(); ?> 
+                <span class="single-sidebar-news"><a href="<?php echo get_permalink();?>"><?php echo get_the_title();?></a></span>
+                <?php endwhile;?>
+                
+              </div>
+            </div>
+          </div> <!-- Event row ends -->
+
+
+        </div>
+      </div>
     </div>
-    <!-- End Services Section -->
 
 
+    
 
-    <!-- Start Portfolio Section -->
-    <div class="section full-width-portfolio" style="padding-bottom: 0px;border-top:0; border-bottom:0; background:#fff;">
+<!--     <div class="section full-width-portfolio" style="padding-bottom: 0px;border-top:0; border-bottom:0; background:#fff;">
 
-      <!-- Start Big Heading -->
       <div class="big-title text-center" data-animation="fadeInDown" data-animation-delay="01">
         <h1>Our <strong>Product</strong></h1>
       </div>
-      <!-- End Big Heading -->
 
-      <!-- <p class="text-center">Sub title for product.</p> -->
-
-      <!-- <div class="portfoliowrapper "> -->
-<!--         <div class="contentheaderspace">
-          
-        </div> -->
         <div class="container product_div">
           <div class="portfolio_wrap">
             <div class="portfolio-box iso-call col-4-space grid cs-style-3" style="position: relative;">
@@ -138,23 +167,9 @@ $des4 = get_post_meta(get_the_ID(), "Description 4", true);
                 </figure>
               </div>
               <?php endwhile;?>
-
-
-
-
             </div>
-
           </div>
-
         </div>  
-      <!-- </div> -->
-
-
-    </div>
-    <!-- End Portfolio Section -->
-
-
-
-
+    </div> -->
 <?php get_footer();?> 
 
