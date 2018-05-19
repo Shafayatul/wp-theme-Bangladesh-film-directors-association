@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <!doctype html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><html lang="en" class="no-js"> <![endif]-->
@@ -211,11 +214,11 @@
               </li>
               <?php if(is_user_logged_in()){ ?>
               <li>
-                <a class="url_nav" href="<?php echo wp_logout_url(); ?>"><b>Logout</b></a>
+                <a class="url_nav" href="<?php echo wp_logout_url(site_url('')); ?>"><b>Logout</b></a>
               </li>
               <?php }else{ ?>
               <li>
-                <a class="url_nav" href=""><b>Login</b></a>
+                <a class="url_nav" href="<?php echo wp_logout_url(site_url('/login/')); ?>"><b>Login</b></a>
               </li>
               <li>
                 <a class="url_nav" href=""><b>Signup</b></a>
@@ -267,11 +270,11 @@
           </li>
           <?php if(is_user_logged_in()){ ?>
           <li>
-            <a class="menu-new-style" href="<?php echo wp_logout_url(); ?>">Logout</a>
+            <a class="menu-new-style" href="<?php echo wp_logout_url(site_url('')); ?>">Logout</a>
           </li>
           <?php }else{ ?>
           <li>
-            <a class="menu-new-style" href="">Login</a>
+            <a class="menu-new-style" href="<?php echo wp_logout_url(site_url('/login/')); ?>">Login</a>
           </li>
           <li>
             <a class="menu-new-style" href="">Signup</a>
