@@ -1,8 +1,6 @@
 <?php get_header();?> 
 
  <?php if(have_posts()): ?>
-
- <?php while(have_posts()):the_post(); ?> 
     <!-- Start Page Banner -->
     <div class="page-banner" style="padding:40px 0; background-color: #12477B; color: white;">
       <div class="container">
@@ -12,13 +10,15 @@
           <div class="col-md-6">
             <ul class="breadcrumbs">
               <li><a href="#">Home</a></li>
-              <li>Bloddg</li>
+              <li><a href="#">Blog</a></li>
             </ul>
           </div>
         </div>
       </div>
     </div>
     <!-- End Page Banner -->
+ <?php while(have_posts()):the_post(); ?> 
+
 
 
     <!-- Start Content -->

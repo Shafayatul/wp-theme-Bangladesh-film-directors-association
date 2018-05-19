@@ -111,31 +111,19 @@ get_header();?>
             <!-- Classic Heading -->
             <h4 class="classic-title" style="color: #fff;"><span>Information</span></h4>
 
-            <!-- Some Info -->
-            <!-- <p style="color: #fff;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.</p> -->
 
             <!-- Divider -->
             <div class="hr1" style="margin-bottom:10px;"></div>
 
             <!-- Info - Icons List -->
             <ul class="icons-list">
-              <li><i class="fa fa-globe"  style="color: #fff;">  </i> <strong>Address:</strong> <br> Shaza Building B1 Airport Highway Beirut-Lebanon</li><br>
-              <li><i class="fa fa-envelope-o"  style="color: #fff;"></i> <strong>Email:</strong> <br> info@mts-sarl.com</li><br>
-              <li><i class="fa fa-mobile"  style="color: #fff;"></i> <strong>Phone:</strong> <br> +961 78 999 965</li><br>
+              <li><i class="fa fa-globe"  style="color: #fff;">  </i> <strong>Address:</strong> <br> total address</li><br>
+              <li><i class="fa fa-envelope-o"  style="color: #fff;"></i> <strong>Email:</strong> <br> info@domain.com</li><br>
+              <li><i class="fa fa-mobile"  style="color: #fff;"></i> <strong>Phone:</strong> <br> +5465 564 65</li><br>
             </ul>
 
-            <!-- Divider -->
             <div class="hr1" style="margin-bottom:15px;"></div>
 
-            <!-- Classic Heading -->
-            <!-- <h4 class="classic-title" style="color: #fff;"><span>Working Hours</span></h4> -->
-
-            <!-- Info - List -->
-            <!-- <ul class="list-unstyled">
-              <li><strong><?php //echo $day_one;?></strong> - <?php echo $time_one;?></li>
-              <li><strong><?php //echo $day_two;?></strong> - <?php echo $time_two;?></li>
-              <li><strong><?php //echo $day_three;?></strong> - <?php echo $time_three;?></li>
-            </ul> -->
 
           </div>
 

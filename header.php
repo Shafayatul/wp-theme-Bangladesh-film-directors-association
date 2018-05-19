@@ -169,28 +169,60 @@
           </div>
           <div class="navbar-collapse collapse">
             <!-- Start Navigation List -->
+            <br>
             <ul class="nav navbar-nav">
               <li class="url_nav">
                 <a class="active home_nav" href="<?php bloginfo('home');?>"><b>Home</b></a>
               </li>
+
+              <li class="url_nav">
+                <a href="<?php echo site_url('/director-guilds/');?>"><b>Director Guilds</b></a>
+              </li>
+              <li class="url_nav">
+                <a href="<?php echo site_url('/events/');?>"><b>Events</b></a>
+              </li>
+              <li class="url_nav">
+                <a href="<?php echo site_url('/history/');?>"><b>History</b></a>
+              </li>
+              <li class="url_nav">
+                <a href="<?php echo site_url('/journal/');?>"><b>Journal</b></a>
+              </li>
+              <li class="url_nav">
+                <a href="<?php echo site_url('/blog/');?>"><b>Blog</b></a>
+              </li>
+              <li class="url_nav">
+                <a href="<?php echo site_url('/gallery/');?>"><b>Gallery</b></a>
+              </li>
+
+
+
+
+<!--               <li class="url_nav">
+                <a href="<?php echo site_url('/cv-upload/');?>"><b>Careers</b></a>
+                 <ul class="dropdown">
+                  <li><a href="<?php echo site_url('/cv-upload/');?>"><b>Upload cv</b></a></li>
+                </ul>          
+              </li> -->
               <li class="url_nav">
                 <a href="<?php echo site_url('/about-us/');?>"><b>About us</b></a>
-              </li>
-              <li class="url_nav">
-                <a href="<?php echo site_url('/service/');?>"><b>Services</b></a>
-              </li>
-              <li class="url_nav">
-                <a href="<?php echo site_url('/all-products/');?>"><b>Products</b></a>
-              </li>
-              <li class="url_nav">
-                <a href="<?php echo site_url('/cv-upload/');?>"><b>Careers</b></a>
-<!--                 <ul class="dropdown">
-                  <li><a href="<?php echo site_url('/cv-upload/');?>"><b>Upload cv</b></a></li>
-                </ul>   -->              
-              </li>
+              </li>              
               <li class="url_nav">
                 <a href="<?php echo site_url('/contact-us/');?>"><b>Contact us</b></a>
               </li>
+              <?php if(is_user_logged_in()){ ?>
+              <li>
+                <a class="url_nav" href="<?php echo wp_logout_url(); ?>"><b>Logout</b></a>
+              </li>
+              <?php }else{ ?>
+              <li>
+                <a class="url_nav" href=""><b>Login</b></a>
+              </li>
+              <li>
+                <a class="url_nav" href=""><b>Signup</b></a>
+              </li>
+              <?php } ?>
+
+
             </ul>
             <!-- End Navigation List -->
           </div>
@@ -201,24 +233,50 @@
           <li>
             <a class="menu-new-style active home_nav"   href="<?php bloginfo('home');?>">Home</a>
           </li>
+
+          <li>
+            <a class="menu-new-style" href="<?php echo site_url('/director-guilds/');?>">Director Guilds</a>
+          </li>
+          <li>
+            <a class="menu-new-style" href="<?php echo site_url('/events/');?>">Events</a>
+          </li>
+          <li>
+            <a class="menu-new-style" href="<?php echo site_url('/history/');?>">History</a>
+          </li>
+          <li>
+            <a class="menu-new-style" href="<?php echo site_url('/journal/');?>">Journal</a>
+          </li>
+          <li>
+            <a class="menu-new-style" href="<?php echo site_url('/blog/');?>">Blog</a>
+          </li>
+          <li>
+            <a class="menu-new-style" href="<?php echo site_url('/gallery/');?>">Gallery</a>
+          </li>
+
+<!--           <li>
+            <a class="menu-new-style" href="<?php echo site_url('/cv-upload/');?>">Careers</a>
+            <ul class="dropdown">
+              <li><a class="menu-new-style" href="<?php echo site_url('/cv-upload/');?>">Upload cv</a></li>
+            </ul>                
+          </li> -->
           <li>
             <a class="menu-new-style" href="<?php echo site_url('/about-us/');?>">About us</a>
-          </li>
-          <li>
-            <a class="menu-new-style" href="<?php echo site_url('/service/');?>">Services</a>
-          </li>
-          <li>
-            <a class="menu-new-style" href="<?php echo site_url('/all-products/');?>">Products</a>
-          </li>
-          <li>
-            <a class="menu-new-style" href="<?php echo site_url('/cv-upload/');?>">Careers</a>
-<!--             <ul class="dropdown">
-              <li><a class="menu-new-style" href="<?php echo site_url('/cv-upload/');?>">Upload cv</a></li>
-            </ul>   -->              
-          </li>
+          </li>          
           <li>
             <a class="menu-new-style" href="<?php echo site_url('/contact-us/');?>">Contact us</a>
           </li>
+          <?php if(is_user_logged_in()){ ?>
+          <li>
+            <a class="menu-new-style" href="<?php echo wp_logout_url(); ?>">Logout</a>
+          </li>
+          <?php }else{ ?>
+          <li>
+            <a class="menu-new-style" href="">Login</a>
+          </li>
+          <li>
+            <a class="menu-new-style" href="">Signup</a>
+          </li>
+          <?php } ?>
         </ul>
         <!-- Mobile Menu End -->
 
