@@ -3,7 +3,7 @@
 Template Name: Login
 */
 get_header();
-
+$message="";
   if(isset($_POST["Login"])){  
     $nonce = $_REQUEST['_wpnonce'];
     if (wp_verify_nonce( $nonce, 'hiddent_csrf_check' ) ) { 
@@ -14,7 +14,12 @@ get_header();
       $creds = array();
       $creds['user_login'] = $user_login;
       $creds['user_password'] = $user_password;
-      $creds['remember'] = true;
+      if($_POST['remember'] = 1){
+        $creds['remember'] = true;
+      }else{
+        $creds['remember'] = false;
+      }
+      
 
       $user = wp_signon( $creds, false );
 
@@ -29,33 +34,32 @@ get_header();
           exit;
         }    
       }else{
-        $message = '<div data-alert="" class="alert-box alert alert-show">
-          <span>User email or password not correct. Please try again.</span>
-            <a class="close">×</a>
-          </div>';    
+        $message = '
+        <div class="alert alert-danger">
+          <strong>Error!</strong> User email or password not correct. Please try again.
+        </div>';    
       }
     }
   }
 ?> 
 <div class="container">
+    <br>
+    <br>
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
             <h1 class="text-center login-title">Sign in to your account</h1>
             <div class="account-wall">
-
-                <?php echo $message;?>
-
-                <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
-                    alt="">
                 <form class="form-signin" method="post">
+                <?php echo $message;?>
                 <input type="text" class="form-control" placeholder="Email" name="user_email" required autofocus>
+                <br>
                 <input type="password" class="form-control" placeholder="Password" name="user_password" required>
                 <button class="btn btn-lg btn-primary btn-block" type="submit" name="Login">Sign in</button>
                 <?php wp_nonce_field( 'hiddent_csrf_check' );?>
-<!--                 <label class="checkbox pull-left">
-                    <input type="checkbox" value="remember-me">
+                <label class="checkbox pull-left">
+                    <input type="checkbox" value="1" name="remember">
                     Remember me
-                </label> -->
+                </label>
                 <!-- <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span> -->
                 </form>
             </div>
