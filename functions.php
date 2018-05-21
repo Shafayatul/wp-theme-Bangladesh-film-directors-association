@@ -209,4 +209,13 @@ add_filter('authenticate', function($user, $email, $password){
 
 remove_filter('authenticate', 'wp_authenticate_username_password', 20);
 
+
+//hide top bar
+add_action('after_setup_theme', 'remove_admin_bar');
+ 
+function remove_admin_bar() {
+if (!current_user_can('administrator') && !is_admin()) {
+  show_admin_bar(false);
+}
+}
 ?>

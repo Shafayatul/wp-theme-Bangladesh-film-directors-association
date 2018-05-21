@@ -66,14 +66,15 @@ ob_start();
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.textillate.js"></script>
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.lettering.js"></script>
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.easypiechart.min.js"></script>
-  <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/smooth-scroll.js"></script>
+  <!-- <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/smooth-scroll.js"></script> -->
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/skrollr.js"></script>
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.parallax.js"></script>
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/mediaelement-and-player.js"></script>
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.slicknav.js"></script> 
 
+
   <!-- Slider -->
-  <script src="<?php echo get_template_directory_uri(); ?>/src/skdslider.js"></script>
+<!--   <script src="<?php echo get_template_directory_uri(); ?>/src/skdslider.js"></script>
   <link href="<?php echo get_template_directory_uri(); ?>/src/skdslider.css" rel="stylesheet">
   <script type="text/javascript">
       jQuery(document).ready(function(){
@@ -87,7 +88,7 @@ ob_start();
         });
         
       });
-  </script>     
+  </script>   -->   
  
   <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -214,6 +215,9 @@ ob_start();
               </li>
               <?php if(is_user_logged_in()){ ?>
               <li>
+                <a class="url_nav" href="<?php echo wp_logout_url(site_url('/my-account/')); ?>"><b>Profile</b></a>
+              </li>
+              <li>
                 <a class="url_nav" href="<?php echo wp_logout_url(site_url('')); ?>"><b>Logout</b></a>
               </li>
               <?php }else{ ?>
@@ -221,7 +225,7 @@ ob_start();
                 <a class="url_nav" href="<?php echo wp_logout_url(site_url('/login/')); ?>"><b>Login</b></a>
               </li>
               <li>
-                <a class="url_nav" href=""><b>Signup</b></a>
+                <a class="url_nav" href="<?php echo wp_logout_url(site_url('/signup/')); ?>"><b>Signup</b></a>
               </li>
               <?php } ?>
 
@@ -270,6 +274,9 @@ ob_start();
           </li>
           <?php if(is_user_logged_in()){ ?>
           <li>
+            <a class="menu-new-style" href="<?php echo wp_logout_url(site_url('/my-account/')); ?>">Profile</a>
+          </li>
+          <li>
             <a class="menu-new-style" href="<?php echo wp_logout_url(site_url('')); ?>">Logout</a>
           </li>
           <?php }else{ ?>
@@ -277,7 +284,7 @@ ob_start();
             <a class="menu-new-style" href="<?php echo wp_logout_url(site_url('/login/')); ?>">Login</a>
           </li>
           <li>
-            <a class="menu-new-style" href="">Signup</a>
+            <a class="menu-new-style" href="<?php echo wp_logout_url(site_url('/signup/')); ?>">Signup</a>
           </li>
           <?php } ?>
         </ul>
