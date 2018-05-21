@@ -1,11 +1,12 @@
 <?php 
 /*
-Template Name: My Account
+Template Name: User Profile
 */
 get_header();
 
-//get user current meta
-$user_id = get_current_user_id();
+
+
+$user_id = $_GET['id'];
 $all_meta_for_user = get_user_meta( $user_id );
 $user_info = get_userdata( $user_id ); 
 
@@ -54,6 +55,10 @@ $user_info = get_userdata( $user_id );
 
         <tbody>
           <tr>
+            <td>profile pic</td>
+            <td><img width="200" src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt=""></td>
+          </tr>          
+          <tr>
             <td>name</td>
             <td><?php echo $all_meta_for_user['custom_user_name'][0];?></td>
           </tr>
@@ -69,10 +74,7 @@ $user_info = get_userdata( $user_id );
             <td>account type</td>
             <td><?php echo $all_meta_for_user['custom_user_account_type'][0];?></td>
           </tr>
-          <tr>
-            <td>profile pic</td>
-            <td><?php echo $all_meta_for_user['custom_user_profile_pic'][0];?></td>
-          </tr>
+
           <tr>
             <td>about me</td>
             <td><?php echo $all_meta_for_user['custom_user_about_me'][0];?></td>

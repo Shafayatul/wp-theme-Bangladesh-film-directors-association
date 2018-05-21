@@ -61,12 +61,10 @@ $user_info = get_userdata( $user_id );
           die('image type not allowed');
         }
       }
-      wp_redirect( site_url("/my-account/") );
+      wp_redirect( site_url("/my-profile/") );
       exit;
     }else{
-
       exit; // CSRF attack
-
     }
   }
 
@@ -183,7 +181,7 @@ $user_info = get_userdata( $user_id );
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
               <div class="pull-right">
-                <a href="<?php echo site_url('/my-account/');?>"><button type="button" class="btn btn-default">Cancel</button></a>
+                <a href="<?php echo site_url('/my-profile/');?>"><button type="button" class="btn btn-default">Cancel</button></a>
                 <button type="submit" class="btn btn-primary" name="submit">Save</button>
               </div>
             </div>

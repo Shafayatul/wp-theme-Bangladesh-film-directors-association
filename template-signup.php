@@ -46,7 +46,7 @@ $message="";
             wp_set_current_user( $user_id);
             wp_set_auth_cookie( $user_id, true, false );
             do_action( 'wp_login', $user_name );
-            wp_redirect( site_url("/my-account/") );
+            wp_redirect( site_url("/my-profile/") );
             exit;
             
           }else{

@@ -3,16 +3,7 @@
 Template Name: Home
 */
 get_header();?> 
-<?php if(have_posts()) : ?><?php while(have_posts())  : the_post(); 
-$title1 = get_post_meta(get_the_ID(), "Title 1", true);
-$des1 = get_post_meta(get_the_ID(), "Description 1", true);
-$title2 = get_post_meta(get_the_ID(), "Title 2", true);
-$des2 = get_post_meta(get_the_ID(), "Description 2", true);
-$title3 = get_post_meta(get_the_ID(), "Title 3", true);
-$des3 = get_post_meta(get_the_ID(), "Description 3", true);
-$title4 = get_post_meta(get_the_ID(), "Title 4", true);
-$des4 = get_post_meta(get_the_ID(), "Description 4", true);
-?>    
+<?php if(have_posts()) : ?><?php while(have_posts())  : the_post(); ?>    
 <?php endwhile; ?>
 <?php else : ?>
   <h3><?php _e('404 Error&#58; Not Found'); ?></h3>

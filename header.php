@@ -215,17 +215,17 @@ ob_start();
               </li>
               <?php if(is_user_logged_in()){ ?>
               <li>
-                <a class="url_nav" href="<?php echo wp_logout_url(site_url('/my-account/')); ?>"><b>Profile</b></a>
+                <a class="url_nav" href="<?php echo site_url('/my-profile/'); ?>"><b>Profile</b></a>
               </li>
               <li>
                 <a class="url_nav" href="<?php echo wp_logout_url(site_url('')); ?>"><b>Logout</b></a>
               </li>
               <?php }else{ ?>
               <li>
-                <a class="url_nav" href="<?php echo wp_logout_url(site_url('/login/')); ?>"><b>Login</b></a>
+                <a class="url_nav" href="<?php echo site_url('/login/'); ?>"><b>Login</b></a>
               </li>
               <li>
-                <a class="url_nav" href="<?php echo wp_logout_url(site_url('/signup/')); ?>"><b>Signup</b></a>
+                <a class="url_nav" href="<?php echo site_url('/signup/'); ?>"><b>Signup</b></a>
               </li>
               <?php } ?>
 
@@ -274,17 +274,17 @@ ob_start();
           </li>
           <?php if(is_user_logged_in()){ ?>
           <li>
-            <a class="menu-new-style" href="<?php echo wp_logout_url(site_url('/my-account/')); ?>">Profile</a>
+            <a class="menu-new-style" href="<?php echo site_url('/my-profile/'); ?>">Profile</a>
           </li>
           <li>
             <a class="menu-new-style" href="<?php echo wp_logout_url(site_url('')); ?>">Logout</a>
           </li>
           <?php }else{ ?>
           <li>
-            <a class="menu-new-style" href="<?php echo wp_logout_url(site_url('/login/')); ?>">Login</a>
+            <a class="menu-new-style" href="<?php echo site_url('/login/'); ?>">Login</a>
           </li>
           <li>
-            <a class="menu-new-style" href="<?php echo wp_logout_url(site_url('/signup/')); ?>">Signup</a>
+            <a class="menu-new-style" href="<?php echo site_url('/signup/'); ?>">Signup</a>
           </li>
           <?php } ?>
         </ul>
