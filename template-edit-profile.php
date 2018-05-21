@@ -18,7 +18,8 @@ $user_info = get_userdata( $user_id );
       update_user_meta( $user_id, 'custom_user_name', $_POST['custom_user_name']);
       update_user_meta( $user_id, 'custom_user_phone', $_POST['custom_user_phone']);
       update_user_meta( $user_id, 'custom_user_registration_number', $_POST['custom_user_registration_number']);
-      update_user_meta( $user_id, 'custom_user_about_me', $_POST['custom_user_about_me']);
+      update_user_meta( $user_id, 'custom_user_short_bio', $_POST['custom_user_short_bio']);
+      update_user_meta( $user_id, 'custom_user_long_bio', $_POST['custom_user_long_bio']);
       update_user_meta( $user_id, 'custom_user_about_work', $_POST['custom_user_about_work']);
       update_user_meta( $user_id, 'custom_user_youtube', $_POST['custom_user_youtube']);
       update_user_meta( $user_id, 'custom_user_facebook', $_POST['custom_user_facebook']);
@@ -126,7 +127,13 @@ $user_info = get_userdata( $user_id );
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">About me</label>
             <div class="col-sm-10">
-              <textarea class="form-control" name="custom_user_about_me"><?php echo $all_meta_for_user['custom_user_about_me'][0];?></textarea>
+              <textarea class="form-control" name="custom_user_short_bio"><?php echo $all_meta_for_user['custom_user_short_bio'][0];?></textarea>
+            </div>
+          </div>  
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="textinput">About me</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" name="custom_user_long_bio"><?php echo $all_meta_for_user['custom_user_long_bio'][0];?></textarea>
             </div>
           </div>
 

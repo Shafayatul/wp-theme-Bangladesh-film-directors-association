@@ -84,11 +84,19 @@ $user_info = get_userdata( $user_id );
             <td><?php echo $all_meta_for_user['custom_user_account_type'][0];?></td>
           </tr>
           <?php } ?>
-          <?php if(isset($all_meta_for_user['custom_user_about_me'][0]) && $all_meta_for_user['custom_user_about_me'][0]!=""){?>             
+          <?php if(isset($all_meta_for_user['custom_user_short_bio'][0]) && $all_meta_for_user['custom_user_short_bio'][0]!=""){?>             
 
           <tr>
             <td>about me</td>
-            <td><?php echo $all_meta_for_user['custom_user_about_me'][0];?></td>
+            <td><?php echo $all_meta_for_user['custom_user_short_bio'][0];?></td>
+          </tr>
+          <?php } ?>
+
+          <?php if(isset($all_meta_for_user['custom_user_long_bio'][0]) && $all_meta_for_user['custom_user_long_bio'][0]!=""){?>             
+
+          <tr>
+            <td>about me</td>
+            <td><?php echo $all_meta_for_user['custom_user_long_bio'][0];?></td>
           </tr>
           <?php } ?>
           <?php if(isset($all_meta_for_user['custom_user_about_work'][0]) && $all_meta_for_user['custom_user_about_work'][0]!=""){?>             
@@ -136,4 +144,10 @@ $user_info = get_userdata( $user_id );
 
   </div>
 </div>
-<?php //get_footer();?> 
+<script type="text/javascript">
+  jQuery(document).ready(function(){
+    jQuery('.url_nav>a').removeClass('active');
+    jQuery('.my-profile').addClass('active');
+  });
+</script>
+<?php get_footer();?> 

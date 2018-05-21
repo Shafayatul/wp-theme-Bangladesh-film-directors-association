@@ -17,171 +17,63 @@ get_header();
     <div class="col-xs-12">
       <div class="carousel slide" id="myCarousel">
         <div class="carousel-inner">
+          <?php 
+            global $wpdb;
+            $table_name = $wpdb->prefix . 'usermeta';
+            $members = $wpdb->get_results( "SELECT * FROM ".$table_name." WHERE meta_value = 'Executive Member' AND meta_key='custom_user_account_type'", OBJECT );
+          ?>
 
+          <div class="item active">
+            <ul class="thumbnails">  
+            <?php     
+            $x=1;
+            $cnt = count($members);
+            $finish_required = true;         
+            foreach ($members as $member) {
+              $user_id = $member->user_id;
+              $all_meta_for_user = get_user_meta( $user_id );
+              $user_info = get_userdata( $user_id );
+            ?>
 
-
-              <?php 
-                global $wpdb;
-                $table_name = $wpdb->prefix . 'usermeta';
-                $members = $wpdb->get_results( "SELECT * FROM ".$table_name." WHERE meta_value = 'Executive Member' AND meta_key='custom_user_account_type'", OBJECT );
-              ?>
-
-              <div class="item active">
-                <ul class="thumbnails">  
-                <?php     
-                $x=1;
-                $cnt = count($members);
-                $finish_required = true;         
-                foreach ($members as $member) {
-                  $user_id = $member->user_id;
-                  $all_meta_for_user = get_user_meta( $user_id );
-                  $user_info = get_userdata( $user_id );
-                ?>
-
-                  <li class="col-sm-3">
-                    <div class="fff">
-                      <div class="thumbnail">
-                        <a href="#"><img src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt=""></a>
-                      </div>
-                      <div class="caption">
-                        <h4><?php echo $all_meta_for_user['custom_user_name'][0];?></h4>
-                        <!-- <p>Nullam Condimentum Nibh Etiam Sem</p> -->
-                        <a class="btn btn-mini" href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Read More</a>
-                      </div>
-                    </div>
-                  </li>
-
-                <?php
-                  if($x%4==0){
-
-                ?>
-                  </ul>
-                </div><!-- /Slide1 --> 
-                <?php if($x!=$cnt){ ?>
-                  <!-- start new slider -->
-                  <div class="item">
-                    <ul class="thumbnails">
-                <?php                  
-                  }
-                  }elseif($x==$cnt){
-                ?>
-                  </ul>
-                </div><!-- /Slide1 --> 
-                <?php
-                  }
-                  $x++;
-                }
-              ?>
-
-          <!-- <div class="item">
-            <ul class="thumbnails">
               <li class="col-sm-3">
                 <div class="fff">
                   <div class="thumbnail">
-                    <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                    <a href="#"><img src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt=""></a>
                   </div>
                   <div class="caption">
-                    <h4>Praesent commodo</h4>
-                    <p>Nullam Condimentum Nibh Etiam Sem</p>
-                    <a class="btn btn-mini" href="#">» Read More</a>
+                    <h4><?php echo $all_meta_for_user['custom_user_name'][0];?></h4>
+                    <!-- <p>Nullam Condimentum Nibh Etiam Sem</p> -->
+                    <a class="btn btn-mini" href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Read More</a>
                   </div>
                 </div>
               </li>
-              <li class="col-sm-3">
-                <div class="fff">
-                  <div class="thumbnail">
-                    <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                  </div>
-                  <div class="caption">
-                    <h4>Praesent commodo</h4>
-                    <p>Nullam Condimentum Nibh Etiam Sem</p>
-                    <a class="btn btn-mini" href="#">» Read More</a>
-                  </div>
-                </div>
-              </li>
-              <li class="col-sm-3">
-                <div class="fff">
-                  <div class="thumbnail">
-                    <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                  </div>
-                  <div class="caption">
-                    <h4>Praesent commodo</h4>
-                    <p>Nullam Condimentum Nibh Etiam Sem</p>
-                    <a class="btn btn-mini" href="#">» Read More</a>
-                  </div>
-                </div>
-              </li>
-              <li class="col-sm-3">
-                <div class="fff">
-                  <div class="thumbnail">
-                    <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                  </div>
-                  <div class="caption">
-                    <h4>Praesent commodo</h4>
-                    <p>Nullam Condimentum Nibh Etiam Sem</p>
-                    <a class="btn btn-mini" href="#">» Read More</a>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div> --><!-- /Slide2 --> 
-          <!-- <div class="item">
-            <ul class="thumbnails">
-              <li class="col-sm-3"> 
-                <div class="fff">
-                  <div class="thumbnail">
-                    <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                  </div>
-                  <div class="caption">
-                    <h4>Praesent commodo</h4>
-                    <p>Nullam Condimentum Nibh Etiam Sem</p>
-                    <a class="btn btn-mini" href="#">» Read More</a>
-                  </div>
-                </div>
-              </li>
-              <li class="col-sm-3">
-                <div class="fff">
-                  <div class="thumbnail">
-                    <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                  </div>
-                  <div class="caption">
-                    <h4>Praesent commodo</h4>
-                    <p>Nullam Condimentum Nibh Etiam Sem</p>
-                    <a class="btn btn-mini" href="#">» Read More</a>
-                  </div>
-                </div>
-              </li>
-              <li class="col-sm-3">
-                <div class="fff">
-                  <div class="thumbnail">
-                    <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                  </div>
-                  <div class="caption">
-                    <h4>Praesent commodo</h4>
-                    <p>Nullam Condimentum Nibh Etiam Sem</p>
-                    <a class="btn btn-mini" href="#">» Read More</a>
-                  </div>
-                </div>
-              </li>
-              <li class="col-sm-3">
-                <div class="fff">
-                  <div class="thumbnail">
-                    <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                  </div>
-                  <div class="caption">
-                    <h4>Praesent commodo</h4>
-                    <p>Nullam Condimentum Nibh Etiam Sem</p>
-                    <a class="btn btn-mini" href="#">» Read More</a>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div> --><!-- /Slide3 --> 
+
+            <?php
+              if($x%4==0){
+
+            ?>
+              </ul>
+            </div><!-- /Slide1 --> 
+            <?php if($x!=$cnt){ ?>
+              <!-- start new slider -->
+              <div class="item">
+                <ul class="thumbnails">
+            <?php                  
+              }
+              }elseif($x==$cnt){
+            ?>
+              </ul>
+            </div><!-- /Slide1 --> 
+            <?php
+              }
+              $x++;
+            }
+          ?>
         </div>
         <nav>
           <ul class="control-box pager">
-            <li><a data-slide="prev" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-left"></i></a></li>
-            <li><a data-slide="next" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-right"></i></li>
+            <li><a data-slide="prev" href="#myCarousel" class=""><i class="fa fa-angle-double-left"></i></a></li>
+            <li><a data-slide="next" href="#myCarousel" class=""><i class="fa fa-angle-double-right"></i></li>
             </ul>
           </nav>
         </div><!-- /#myCarousel -->
@@ -199,43 +91,63 @@ get_header();
     <div class="col-xs-12">
       <div class="carousel slide" id="myCarousel">
         <div class="carousel-inner">
+          <?php 
+            global $wpdb;
+            $table_name = $wpdb->prefix . 'usermeta';
+            $members = $wpdb->get_results( "SELECT * FROM ".$table_name." WHERE meta_value = 'Life Time Member' AND meta_key='custom_user_account_type'", OBJECT );
+          ?>
 
           <div class="item active">
-            <ul class="thumbnails">
+            <ul class="thumbnails">  
+            <?php     
+            $x=1;
+            $cnt = count($members);
+            $finish_required = true;         
+            foreach ($members as $member) {
+              $user_id = $member->user_id;
+              $all_meta_for_user = get_user_meta( $user_id );
+              $user_info = get_userdata( $user_id );
+            ?>
 
-              <?php 
-                global $wpdb;
-                $table_name = $wpdb->prefix . 'usermeta';
-                $members = $wpdb->get_results( "SELECT * FROM ".$table_name." WHERE meta_value = 'Life Time Member' AND meta_key='custom_user_account_type'", OBJECT );
-
-                foreach ($members as $member) {
-                  $user_id = $member->user_id;
-                  $all_meta_for_user = get_user_meta( $user_id );
-                  $user_info = get_userdata( $user_id ); 
-              ?>
-                <li class="col-sm-3">
-                  <div class="fff">
-                    <div class="thumbnail">
-                      <a href="#"><img src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt=""></a>
-                    </div>
-                    <div class="caption">
-                      <h4><?php echo $all_meta_for_user['custom_user_name'][0];?></h4>
-                      <!-- <p>Nullam Condimentum Nibh Etiam Sem</p> -->
-                      <a class="btn btn-mini" href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Read More</a>
-                    </div>
+              <li class="col-sm-3">
+                <div class="fff">
+                  <div class="thumbnail">
+                    <a href="#"><img src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt=""></a>
                   </div>
-                </li>
-              <?php
+                  <div class="caption">
+                    <h4><?php echo $all_meta_for_user['custom_user_name'][0];?></h4>
+                    <!-- <p>Nullam Condimentum Nibh Etiam Sem</p> -->
+                    <a class="btn btn-mini" href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Read More</a>
+                  </div>
+                </div>
+              </li>
 
-                }
-              ?>
-            </ul>
-          </div><!-- /Slide1 --> 
+            <?php
+              if($x%4==0){
+
+            ?>
+              </ul>
+            </div><!-- /Slide1 --> 
+            <?php if($x!=$cnt){ ?>
+              <!-- start new slider -->
+              <div class="item">
+                <ul class="thumbnails">
+            <?php                  
+              }
+              }elseif($x==$cnt){
+            ?>
+              </ul>
+            </div><!-- /Slide1 --> 
+            <?php
+              }
+              $x++;
+            }
+          ?>
         </div>
         <nav>
           <ul class="control-box pager">
-            <li><a data-slide="prev" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-left"></i></a></li>
-            <li><a data-slide="next" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-right"></i></li>
+            <li><a data-slide="prev" href="#myCarousel" class=""><i class="fa fa-angle-double-left"></i></a></li>
+            <li><a data-slide="next" href="#myCarousel" class=""><i class="fa fa-angle-double-right"></i></li>
             </ul>
           </nav>
         </div><!-- /#myCarousel -->
@@ -251,43 +163,63 @@ get_header();
     <div class="col-xs-12">
       <div class="carousel slide" id="myCarousel">
         <div class="carousel-inner">
+          <?php 
+            global $wpdb;
+            $table_name = $wpdb->prefix . 'usermeta';
+            $members = $wpdb->get_results( "SELECT * FROM ".$table_name." WHERE meta_value = 'Member' AND meta_key='custom_user_account_type'", OBJECT );
+          ?>
 
           <div class="item active">
-            <ul class="thumbnails">
+            <ul class="thumbnails">  
+            <?php     
+            $x=1;
+            $cnt = count($members);
+            $finish_required = true;         
+            foreach ($members as $member) {
+              $user_id = $member->user_id;
+              $all_meta_for_user = get_user_meta( $user_id );
+              $user_info = get_userdata( $user_id );
+            ?>
 
-              <?php 
-                global $wpdb;
-                $table_name = $wpdb->prefix . 'usermeta';
-                $members = $wpdb->get_results( "SELECT * FROM ".$table_name." WHERE meta_value = 'Member' AND meta_key='custom_user_account_type'", OBJECT );
-
-                foreach ($members as $member) {
-                  $user_id = $member->user_id;
-                  $all_meta_for_user = get_user_meta( $user_id );
-                  $user_info = get_userdata( $user_id ); 
-              ?>
-                <li class="col-sm-3">
-                  <div class="fff">
-                    <div class="thumbnail">
-                      <a href="#"><img src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt=""></a>
-                    </div>
-                    <div class="caption">
-                      <h4><?php echo $all_meta_for_user['custom_user_name'][0];?></h4>
-                      <!-- <p>Nullam Condimentum Nibh Etiam Sem</p> -->
-                      <a class="btn btn-mini" href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Read More</a>
-                    </div>
+              <li class="col-sm-3">
+                <div class="fff">
+                  <div class="thumbnail">
+                    <a href="#"><img src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt=""></a>
                   </div>
-                </li>
-              <?php
+                  <div class="caption">
+                    <h4><?php echo $all_meta_for_user['custom_user_name'][0];?></h4>
+                    <!-- <p>Nullam Condimentum Nibh Etiam Sem</p> -->
+                    <a class="btn btn-mini" href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Read More</a>
+                  </div>
+                </div>
+              </li>
 
-                }
-              ?>
-            </ul>
-          </div><!-- /Slide1 --> 
+            <?php
+              if($x%4==0){
+
+            ?>
+              </ul>
+            </div><!-- /Slide1 --> 
+            <?php if($x!=$cnt){ ?>
+              <!-- start new slider -->
+              <div class="item">
+                <ul class="thumbnails">
+            <?php                  
+              }
+              }elseif($x==$cnt){
+            ?>
+              </ul>
+            </div><!-- /Slide1 --> 
+            <?php
+              }
+              $x++;
+            }
+          ?>
         </div>
         <nav>
           <ul class="control-box pager">
-            <li><a data-slide="prev" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-left"></i></a></li>
-            <li><a data-slide="next" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-right"></i></li>
+            <li><a data-slide="prev" href="#myCarousel" class=""><i class="fa fa-angle-double-left"></i></a></li>
+            <li><a data-slide="next" href="#myCarousel" class=""><i class="fa fa-angle-double-right"></i></li>
             </ul>
           </nav>
         </div><!-- /#myCarousel -->
@@ -303,43 +235,63 @@ get_header();
     <div class="col-xs-12">
       <div class="carousel slide" id="myCarousel">
         <div class="carousel-inner">
+          <?php 
+            global $wpdb;
+            $table_name = $wpdb->prefix . 'usermeta';
+            $members = $wpdb->get_results( "SELECT * FROM ".$table_name." WHERE meta_value = 'Associate Member' AND meta_key='custom_user_account_type'", OBJECT );
+          ?>
 
           <div class="item active">
-            <ul class="thumbnails">
+            <ul class="thumbnails">  
+            <?php     
+            $x=1;
+            $cnt = count($members);
+            $finish_required = true;         
+            foreach ($members as $member) {
+              $user_id = $member->user_id;
+              $all_meta_for_user = get_user_meta( $user_id );
+              $user_info = get_userdata( $user_id );
+            ?>
 
-              <?php 
-                global $wpdb;
-                $table_name = $wpdb->prefix . 'usermeta';
-                $members = $wpdb->get_results( "SELECT * FROM ".$table_name." WHERE meta_value = 'Associate Member' AND meta_key='custom_user_account_type'", OBJECT );
-
-                foreach ($members as $member) {
-                  $user_id = $member->user_id;
-                  $all_meta_for_user = get_user_meta( $user_id );
-                  $user_info = get_userdata( $user_id ); 
-              ?>
-                <li class="col-sm-3">
-                  <div class="fff">
-                    <div class="thumbnail">
-                      <a href="#"><img src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt=""></a>
-                    </div>
-                    <div class="caption">
-                      <h4><?php echo $all_meta_for_user['custom_user_name'][0];?></h4>
-                      <!-- <p>Nullam Condimentum Nibh Etiam Sem</p> -->
-                      <a class="btn btn-mini" href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Read More</a>
-                    </div>
+              <li class="col-sm-3">
+                <div class="fff">
+                  <div class="thumbnail">
+                    <a href="#"><img src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt=""></a>
                   </div>
-                </li>
-              <?php
+                  <div class="caption">
+                    <h4><?php echo $all_meta_for_user['custom_user_name'][0];?></h4>
+                    <!-- <p>Nullam Condimentum Nibh Etiam Sem</p> -->
+                    <a class="btn btn-mini" href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Read More</a>
+                  </div>
+                </div>
+              </li>
 
-                }
-              ?>
-            </ul>
-          </div><!-- /Slide1 --> 
+            <?php
+              if($x%4==0){
+
+            ?>
+              </ul>
+            </div><!-- /Slide1 --> 
+            <?php if($x!=$cnt){ ?>
+              <!-- start new slider -->
+              <div class="item">
+                <ul class="thumbnails">
+            <?php                  
+              }
+              }elseif($x==$cnt){
+            ?>
+              </ul>
+            </div><!-- /Slide1 --> 
+            <?php
+              }
+              $x++;
+            }
+          ?>
         </div>
         <nav>
           <ul class="control-box pager">
-            <li><a data-slide="prev" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-left"></i></a></li>
-            <li><a data-slide="next" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-right"></i></li>
+            <li><a data-slide="prev" href="#myCarousel" class=""><i class="fa fa-angle-double-left"></i></a></li>
+            <li><a data-slide="next" href="#myCarousel" class=""><i class="fa fa-angle-double-right"></i></li>
             </ul>
           </nav>
         </div><!-- /#myCarousel -->
@@ -355,43 +307,63 @@ get_header();
     <div class="col-xs-12">
       <div class="carousel slide" id="myCarousel">
         <div class="carousel-inner">
+          <?php 
+            global $wpdb;
+            $table_name = $wpdb->prefix . 'usermeta';
+            $members = $wpdb->get_results( "SELECT * FROM ".$table_name." WHERE meta_value = 'Primary Member' AND meta_key='custom_user_account_type'", OBJECT );
+          ?>
 
           <div class="item active">
-            <ul class="thumbnails">
+            <ul class="thumbnails">  
+            <?php     
+            $x=1;
+            $cnt = count($members);
+            $finish_required = true;         
+            foreach ($members as $member) {
+              $user_id = $member->user_id;
+              $all_meta_for_user = get_user_meta( $user_id );
+              $user_info = get_userdata( $user_id );
+            ?>
 
-              <?php 
-                global $wpdb;
-                $table_name = $wpdb->prefix . 'usermeta';
-                $members = $wpdb->get_results( "SELECT * FROM ".$table_name." WHERE meta_value = 'Primary Member' AND meta_key='custom_user_account_type'", OBJECT );
-
-                foreach ($members as $member) {
-                  $user_id = $member->user_id;
-                  $all_meta_for_user = get_user_meta( $user_id );
-                  $user_info = get_userdata( $user_id ); 
-              ?>
-                <li class="col-sm-3">
-                  <div class="fff">
-                    <div class="thumbnail">
-                      <a href="#"><img src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt=""></a>
-                    </div>
-                    <div class="caption">
-                      <h4><?php echo $all_meta_for_user['custom_user_name'][0];?></h4>
-                      <!-- <p>Nullam Condimentum Nibh Etiam Sem</p> -->
-                      <a class="btn btn-mini" href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Read More</a>
-                    </div>
+              <li class="col-sm-3">
+                <div class="fff">
+                  <div class="thumbnail">
+                    <a href="#"><img src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt=""></a>
                   </div>
-                </li>
-              <?php
+                  <div class="caption">
+                    <h4><?php echo $all_meta_for_user['custom_user_name'][0];?></h4>
+                    <!-- <p>Nullam Condimentum Nibh Etiam Sem</p> -->
+                    <a class="btn btn-mini" href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Read More</a>
+                  </div>
+                </div>
+              </li>
 
-                }
-              ?>
-            </ul>
-          </div><!-- /Slide1 --> 
+            <?php
+              if($x%4==0){
+
+            ?>
+              </ul>
+            </div><!-- /Slide1 --> 
+            <?php if($x!=$cnt){ ?>
+              <!-- start new slider -->
+              <div class="item">
+                <ul class="thumbnails">
+            <?php                  
+              }
+              }elseif($x==$cnt){
+            ?>
+              </ul>
+            </div><!-- /Slide1 --> 
+            <?php
+              }
+              $x++;
+            }
+          ?>
         </div>
         <nav>
           <ul class="control-box pager">
-            <li><a data-slide="prev" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-left"></i></a></li>
-            <li><a data-slide="next" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-right"></i></li>
+            <li><a data-slide="prev" href="#myCarousel" class=""><i class="fa fa-angle-double-left"></i></a></li>
+            <li><a data-slide="next" href="#myCarousel" class=""><i class="fa fa-angle-double-right"></i></li>
             </ul>
           </nav>
         </div><!-- /#myCarousel -->

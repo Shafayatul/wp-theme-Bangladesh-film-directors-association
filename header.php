@@ -176,7 +176,7 @@ ob_start();
             <br>
             <ul class="nav navbar-nav">
               <li class="url_nav">
-                <a class="active home_nav" href="<?php bloginfo('home');?>"><b>Home</b></a>
+                <a class="active home_nav" href="<?php echo site_url('/home/');?>"><b>Home</b></a>
               </li>
 
               <li class="url_nav">
@@ -215,7 +215,7 @@ ob_start();
               </li>
               <?php if(is_user_logged_in()){ ?>
               <li>
-                <a class="url_nav" href="<?php echo site_url('/my-profile/'); ?>"><b>Profile</b></a>
+                <a class="url_nav my-profile" href="<?php echo site_url('/my-profile/'); ?>"><b>Profile</b></a>
               </li>
               <li>
                 <a class="url_nav" href="<?php echo wp_logout_url(site_url('')); ?>"><b>Logout</b></a>
@@ -225,7 +225,7 @@ ob_start();
                 <a class="url_nav" href="<?php echo site_url('/login/'); ?>"><b>Login</b></a>
               </li>
               <li>
-                <a class="url_nav" href="<?php echo site_url('/signup/'); ?>"><b>Signup</b></a>
+                <a class="url_nav signup" href="<?php echo site_url('/signup/'); ?>"><b>Signup</b></a>
               </li>
               <?php } ?>
 
@@ -238,7 +238,7 @@ ob_start();
         <!-- Mobile Menu Start -->
         <ul class="wpb-mobile-menu">
           <li>
-            <a class="menu-new-style active home_nav"   href="<?php bloginfo('home');?>">Home</a>
+            <a class="menu-new-style active home_nav"   href="<?php echo site_url('/home/');?>">Home</a>
           </li>
 
           <li>

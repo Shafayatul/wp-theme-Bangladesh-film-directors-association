@@ -30,7 +30,8 @@ $message="";
             add_user_meta( $user_id, 'custom_user_account_type', $_POST['account_type']);
 
             add_user_meta( $user_id, 'custom_user_profile_pic', '');
-            add_user_meta( $user_id, 'custom_user_about_me', '');
+            add_user_meta( $user_id, 'custom_user_short_bio', '');
+            add_user_meta( $user_id, 'custom_user_long_bio', '');
             add_user_meta( $user_id, 'custom_user_about_work', '');
             add_user_meta( $user_id, 'custom_user_youtube', '');
             add_user_meta( $user_id, 'custom_user_facebook', '');
@@ -116,5 +117,10 @@ $message="";
         </div>
     </div>
 </div>
-
+<script type="text/javascript">
+  jQuery(document).ready(function(){
+    jQuery('.url_nav>a').removeClass('active');
+    jQuery('.signup').addClass('active');
+  });
+</script>
 <?php get_footer();?>

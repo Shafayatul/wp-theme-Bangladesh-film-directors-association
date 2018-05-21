@@ -1,21 +1,4 @@
-<div class="container">
-  <div  class="row">
-    <div class="col-md-12">
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <!-- Responsive Banner -->
-      <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-5794587985510139"
-      data-ad-slot="2186899403"
-      data-ad-format="auto"></ins>
-      <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>      
-    </div>
-  </div>
-</div>
-<br>
-<br>
+
 
 <script type="text/javascript">
       jQuery(document).ready(function(){

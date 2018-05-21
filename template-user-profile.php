@@ -76,8 +76,12 @@ $user_info = get_userdata( $user_id );
           </tr>
 
           <tr>
-            <td>about me</td>
-            <td><?php echo $all_meta_for_user['custom_user_about_me'][0];?></td>
+            <td>short bio</td>
+            <td><?php echo $all_meta_for_user['custom_user_short_bio'][0];?></td>
+          </tr>
+          <tr>
+            <td>Long Bio</td>
+            <td><?php echo $all_meta_for_user['custom_user_long_bio'][0];?></td>
           </tr>
           <tr>
             <td>about work</td>
