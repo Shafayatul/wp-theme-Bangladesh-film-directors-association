@@ -14,12 +14,54 @@ add_action('admin_menu', 'ct_main_menu');
 function ct_main_menu(){
         add_menu_page( 'User Activaton', 'User Activaton', 'manage_options', 'ct-user-activation', 'ct_all_member' );
         add_submenu_page(null, "Change Designation", "Change Designation", 'manage_options', "ct-change-designation", "ct_status_designation");
+        add_submenu_page(null, "Assign Role", "Assign Role", 'manage_options', "ct-assign-role", "ct_assign_role");
         add_submenu_page(null, "Change Status", "Change Status", 'manage_options', "ct-change-status", "ct_status_change");
 }
 
+
+function ct_assign_role(){
+    if(is_super_admin()){
+        $message = "";
+        if(isset($_POST['submit'])){
+            delete_user_meta($_POST['user_id'],'custom_user_account_type');
+            foreach ($_POST['role'] as $role) {
+                add_user_meta($_POST['user_id'],'custom_user_account_type',$role);
+            }
+            $message = "Designation successfully updated.";
+        }
+?>
+
+    <div class="wrap">
+
+        <h2>Assign Roles to user:</h2>
+        <form action="<?php esc_url( $_SERVER['REQUEST_URI'] );?>" method="post">
+
+            <?php if($message!=""){?>
+                <div class="updated notice">
+                    <p><?php echo $message;?></p>
+                </div>
+            <?php } ?>
+            <br><br>
+              
+            <label for="custom_user_designation"  ><div class="text-left">Roles:</div></label>
+            <div class="checkbox">
+              <label><input name="role[]" type="checkbox" value="Executive Member">Executive Member</label><br>
+              <label><input name="role[]" type="checkbox" value="Life Time Member">Life Time Member</label><br>
+              <label><input name="role[]" type="checkbox" value="Member">Member</label><br>
+              <label><input name="role[]" type="checkbox" value="Associate Member">Associate Member</label><br>
+              <label><input name="role[]" type="checkbox" value="Primary Member">Primary Member</label>
+            </div>
+            <input type="hidden" name="user_id" value="<?php echo $_GET['id'];?>">
+            <br>
+            <button type="submit" name="submit" >Submit</button>
+        </form>
+    </div>
+<?php
+    }
+}
+
+
 function ct_status_designation(){
-
-
     if(is_super_admin()){
         $message = "";
         if(isset($_POST['submit'])){
@@ -213,6 +255,7 @@ function ct_all_member(){
                         'ROLE'        => get_user_meta($all_members_detail->ID, 'custom_user_account_type', true),
                         'STATUS'        => $status,
                         'ACTION'      => $html_btn.'
+                        &nbsp;<a target="_blank" href="'.admin_url().'?page=ct-assign-role&id='.$all_members_detail->ID.'" class="button button-primary">Role</a>
                         &nbsp;<a target="_blank" href="'.admin_url().'?page=ct-change-designation&id='.$all_members_detail->ID.'" class="button button-primary">Designation</a>
                         &nbsp;<a target="_blank" href="'.site_url('/user-profile/').'?id='.$all_members_detail->ID.'" class="button button-primary">Detail</a>'
                         );
