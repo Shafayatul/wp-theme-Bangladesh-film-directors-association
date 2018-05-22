@@ -113,11 +113,11 @@ ob_start();
             <div class="col-md-7">
               <!-- Start Contact Info -->
               <ul class="contact-details">
-                <li><a href="#"><i class="fa fa-map-marker"></i> Shaza Building B1 Airport Highway Beirut-Lebanon</a>
+                <li><a href="#"><i class="fa fa-map-marker"></i> House: 221, Road: 02, Block: A, Niketon, Gulshan-1.</a>
                 </li>
-                <li><a href="#"><i class="fa fa-envelope-o"></i> info@mts-sarl.com</a>
+                <li><a href="#"><i class="fa fa-envelope-o"></i> info@directorsguildbd.com</a>
                 </li>
-                <li><a href="#"><i class="fa fa-phone"></i> +961 78 999 965</a>
+                <li><a href="#"><i class="fa fa-phone"></i> +88 01733879143</a>
                 </li>
               </ul>
               <!-- End Contact Info -->
@@ -180,11 +180,9 @@ ob_start();
               </li>
 
               <li class="url_nav">
-                <a href="<?php echo site_url('/director-guilds/');?>"><b>Director Guilds</b></a>
+                <a href="<?php echo site_url('/director-guilds/');?>"><b>Members</b></a>
               </li>
-              <li class="url_nav">
-                <a href="<?php echo site_url('/events/');?>"><b>Events</b></a>
-              </li>
+
               <li class="url_nav">
                 <a href="<?php echo site_url('/history/');?>"><b>History</b></a>
               </li>
@@ -194,6 +192,9 @@ ob_start();
               <li class="url_nav">
                 <a href="<?php echo site_url('/blog/');?>"><b>Blog</b></a>
               </li>
+              <li class="url_nav">
+                <a href="<?php echo site_url('/events/');?>"><b>Events</b></a>
+              </li>              
               <li class="url_nav">
                 <a href="<?php echo site_url('/gallery/');?>"><b>Gallery</b></a>
               </li>
@@ -224,9 +225,9 @@ ob_start();
               <li>
                 <a class="url_nav" href="<?php echo site_url('/login/'); ?>"><b>Login</b></a>
               </li>
-              <li>
+              <!-- <li>
                 <a class="url_nav signup" href="<?php echo site_url('/signup/'); ?>"><b>Signup</b></a>
-              </li>
+              </li> -->
               <?php } ?>
 
 
@@ -242,11 +243,9 @@ ob_start();
           </li>
 
           <li>
-            <a class="menu-new-style" href="<?php echo site_url('/director-guilds/');?>">Director Guilds</a>
+            <a class="menu-new-style" href="<?php echo site_url('/director-guilds/');?>">Members</a>
           </li>
-          <li>
-            <a class="menu-new-style" href="<?php echo site_url('/events/');?>">Events</a>
-          </li>
+
           <li>
             <a class="menu-new-style" href="<?php echo site_url('/history/');?>">History</a>
           </li>
@@ -256,6 +255,9 @@ ob_start();
           <li>
             <a class="menu-new-style" href="<?php echo site_url('/blog/');?>">Blog</a>
           </li>
+          <li>
+            <a class="menu-new-style" href="<?php echo site_url('/events/');?>">Events</a>
+          </li>          
           <li>
             <a class="menu-new-style" href="<?php echo site_url('/gallery/');?>">Gallery</a>
           </li>
@@ -283,9 +285,9 @@ ob_start();
           <li>
             <a class="menu-new-style" href="<?php echo site_url('/login/'); ?>">Login</a>
           </li>
-          <li>
+          <!-- <li>
             <a class="menu-new-style" href="<?php echo site_url('/signup/'); ?>">Signup</a>
-          </li>
+          </li> -->
           <?php } ?>
         </ul>
         <!-- Mobile Menu End -->

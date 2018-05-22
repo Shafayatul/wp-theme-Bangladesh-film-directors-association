@@ -67,6 +67,10 @@ $user_info = get_userdata( $user_id );
             <td><?php echo $all_meta_for_user['custom_user_phone'][0];?></td>
           </tr>
           <tr>
+            <td>designation</td>
+            <td><?php echo $all_meta_for_user['custom_user_designation'][0];?></td>
+          </tr>
+          <tr>
             <td>registration number</td>
             <td><?php echo $all_meta_for_user['custom_user_registration_number'][0];?></td>
           </tr>

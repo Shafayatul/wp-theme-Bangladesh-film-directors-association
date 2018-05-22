@@ -27,8 +27,9 @@ $message="";
             add_user_meta( $user_id, 'custom_user_name', $_POST['user_name']);
             add_user_meta( $user_id, 'custom_user_phone', $_POST['phone']);
             add_user_meta( $user_id, 'custom_user_registration_number', $_POST['registration_number']);
-            add_user_meta( $user_id, 'custom_user_account_type', $_POST['account_type']);
-
+            add_user_meta( $user_id, 'custom_user_designation', '');
+            
+            add_user_meta( $user_id, 'custom_user_account_type', '');
             add_user_meta( $user_id, 'custom_user_profile_pic', '');
             add_user_meta( $user_id, 'custom_user_short_bio', '');
             add_user_meta( $user_id, 'custom_user_long_bio', '');
@@ -100,7 +101,7 @@ $message="";
                 <input type="password" class="form-control" placeholder="Password" name="password" required>
                 <br>
                 <input type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation" required>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="account_type">Account Type:</label>
                   <select class="form-control" id="account_type" name="account_type">
                     <option value="Executive Member">Executive Member</option>
@@ -109,7 +110,7 @@ $message="";
                     <option value="Associate Member">Associate Member</option>
                     <option value="Primary Member">Primary Member</option>
                   </select>
-                </div>
+                </div> -->
                 <button class="btn btn-lg btn-primary btn-block" type="submit" name="Login">Sign in</button>
                 <?php wp_nonce_field( 'hiddent_csrf_check' );?>
                 </form>

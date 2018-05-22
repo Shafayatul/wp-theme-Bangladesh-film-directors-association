@@ -109,9 +109,9 @@
             <div class="footer-widget contact-widget">
               <h4>Address<span class="head-line"></span></h4>
               <ul>
-                <li><span>Phone Number:</span> +45 45 54 </li>
-                <li><span>Email:</span> info@ddddd.com</li>
-                <li><span>Website:</span> www.ddddd.com</li>
+                <li><span>Phone Number:</span> +88 01733879143</li>
+                <li><span>Email:</span> info@directorsguildbd.com</li>
+                <li><span>Website:</span> www.directorsguildbd.com</li>
               </ul>
             </div>
           </div>

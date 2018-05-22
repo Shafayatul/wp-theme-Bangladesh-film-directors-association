@@ -124,14 +124,15 @@ $user_info = get_userdata( $user_id );
             </div>
           </div>
   
+  
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">About me</label>
+            <label class="col-sm-2 control-label" for="textinput">Short Bio</label>
             <div class="col-sm-10">
               <textarea class="form-control" name="custom_user_short_bio"><?php echo $all_meta_for_user['custom_user_short_bio'][0];?></textarea>
             </div>
           </div>  
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">About me</label>
+            <label class="col-sm-2 control-label" for="textinput">Long Bio</label>
             <div class="col-sm-10">
               <textarea class="form-control" name="custom_user_long_bio"><?php echo $all_meta_for_user['custom_user_long_bio'][0];?></textarea>
             </div>
