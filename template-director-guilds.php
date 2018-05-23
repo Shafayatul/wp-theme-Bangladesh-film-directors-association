@@ -4,21 +4,26 @@ Template Name: Director Guilds
 */
 get_header();
 ?>   
-<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style2.css" media="screen" type="text/css" >
+<!-- <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style2.css" media="screen" type="text/css" > -->
 
 
 <div class="container">
   <div class="row">
     <div class="col-md-12">
       <h2 class="colored-title center-text">Executive Member</h2>
+      <p class="text-center">
+        <a class="btn btn-primary btn-xs " href="<?php echo site_url('/list-view/').'?type=Executive Member';?>">List View</a>
+      </p>
     </div>    
     <div class="col-xs-12">
       <div class="carousel slide" id="myCarousel">
         <div class="carousel-inner">
           <?php 
-            global $wpdb;
-            $table_name = $wpdb->prefix . 'usermeta';
-            $members = $wpdb->get_results( "SELECT * FROM ".$table_name." WHERE meta_value = 'Executive Member' AND meta_key='custom_user_account_type'", OBJECT );
+            // global $wpdb;
+            // $table_name = $wpdb->prefix . 'usermeta';
+            // $members = $wpdb->get_results( "SELECT * FROM ".$table_name." WHERE meta_value = 'Executive Member' AND meta_key='custom_user_account_type'", OBJECT );
+            $members = get_user_meta(1,'custom_executive_serial', true);
+            $members = explode(',', $members);
           ?>
 
           <div class="item item-a active">
@@ -26,9 +31,9 @@ get_header();
             <?php     
             $x=1;
             $cnt = count($members);
-            $finish_required = true;         
-            foreach ($members as $member) {
-              $user_id = $member->user_id;
+            $finish_required = true;      
+            foreach ($members as $key => $value) {
+              $user_id = $value;
               if(get_user_meta($user_id, 'custom_is_active', true) == 1){
               $all_meta_for_user = get_user_meta( $user_id );
               $user_info = get_userdata( $user_id );
@@ -92,6 +97,9 @@ get_header();
   <div class="row">
     <div class="col-md-12">
       <h2 class="colored-title center-text">Life Time Member</h2>
+      <p class="text-center">
+        <a class="btn btn-primary btn-xs " href="<?php echo site_url('/list-view/').'?type=Life Time Member';?>">List View</a>
+      </p>      
     </div>    
     <div class="col-xs-12">
       <div class="carousel slide" id="myCarousel">
@@ -168,6 +176,9 @@ get_header();
   <div class="row">
     <div class="col-md-12">
       <h2 class="colored-title center-text">Member</h2>
+      <p class="text-center">
+        <a class="btn btn-primary btn-xs " href="<?php echo site_url('/list-view/').'?type=Member';?>">List View</a>
+      </p>      
     </div>    
     <div class="col-xs-12">
       <div class="carousel slide" id="myCarousel">
@@ -244,6 +255,9 @@ get_header();
   <div class="row">
     <div class="col-md-12">
       <h2 class="colored-title center-text">Associate Member</h2>
+      <p class="text-center">
+        <a class="btn btn-primary btn-xs " href="<?php echo site_url('/list-view/').'?type=Associate Member';?>">List View</a>
+      </p>      
     </div>    
     <div class="col-xs-12">
       <div class="carousel slide" id="myCarousel">
@@ -320,6 +334,9 @@ get_header();
   <div class="row">
     <div class="col-md-12">
       <h2 class="colored-title center-text">Primary Member</h2>
+      <p class="text-center">
+        <a class="btn btn-primary btn-xs " href="<?php echo site_url('/list-view/').'?type=Primary Member';?>">List View</a>
+      </p>      
     </div>    
     <div class="col-xs-12">
       <div class="carousel slide" id="myCarousel">

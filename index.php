@@ -35,7 +35,7 @@
               <h4 class="classic-title"><span><a href="<?php the_permalink(); ?>"><?php the_title();?></a></span></h4>
               <!-- Some Text -->
               <p><?php the_excerpt ();?></p>
-              <a class="btn btn-success" href="<?php the_permalink(); ?>">Read More <i class="fa fa-angle-right"></i></a>
+              <a class="btn btn-primary" href="<?php the_permalink(); ?>">Read More <i class="fa fa-angle-right"></i></a>
 
               <!-- Start Pagination --> 
             </div>

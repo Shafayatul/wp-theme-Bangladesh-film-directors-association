@@ -36,8 +36,17 @@
               <!-- Classic Heading -->
               <h4 class="classic-title"><span><a href="<?php the_permalink(); ?>"><?php the_title();?></a></span></h4>
               <!-- Some Text -->
-              <p><?php the_excerpt ();?></p>
-              <a class="btn btn-success" href="<?php the_permalink(); ?>">Read More <i class="fa fa-angle-right"></i></a>
+              <?php if(has_post_thumbnail()){?>
+                <div class="row">
+                  <div class="col-md-3"><img src="<?php echo get_the_post_thumbnail_url();?>" class="img-responsive img-thumbnail"></div>
+                  <div class="col-md-9"><?php the_excerpt ();?></div>
+                </div>
+                <br>
+              <?php }else{ ?>
+                <p><?php the_excerpt ();?></p>
+              <?php } ?>
+              
+              <a class="btn btn-primary" href="<?php the_permalink(); ?>">Read More <i class="fa fa-angle-right"></i></a>
 
               <!-- Start Pagination --> 
             </div>
@@ -52,44 +61,3 @@
 
         <?php endif; ?>      
 <?php get_footer();?> 
-
-
-<!-- <?php get_header();?> 
-  <?php if(have_posts()) : ?><?php while(have_posts())  : the_post(); ?> -->
-
-    <!-- Start Page Banner -->
-<!--     <div class="page-banner" style="padding:40px 0; background-color: #12477B; color: white;">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-          </div>
-          <div class="col-md-6">
-            <ul class="breadcrumbs">
-              <li><?php the_title();?></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- End Page Banner -->
-
-
-    <!-- Start Content -->
-<!--     <div id="content">
-      <div class="container">
-        <div class="page-content">
-          <div class="row">
-            <div class="col-md-12">
-              <h4 class="classic-title"><span><?php the_title();?></span></h4>
-              <?php the_content(); ?>
-            </div>
-          </div>         
-        </div>
-      </div>
-    </div>
-  <?php endwhile; ?>
-  <?php else : ?>
-    <h3><?php _e('404 Error&#58; Not Found'); ?></h3>
-  <?php endif; ?>
-
-<?php get_footer();?>  -->

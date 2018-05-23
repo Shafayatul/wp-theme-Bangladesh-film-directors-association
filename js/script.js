@@ -4,10 +4,10 @@
 /* ----------------- Start JS Document ----------------- */
 
 // Page Loader
-$(window).load(function () {
+/*$(window).load(function () {
     "use strict";    
   $('#loader').fadeOut();
-});
+});*/
 
 $(document).ready(function ($) {
   "use strict"; 

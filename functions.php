@@ -13,22 +13,86 @@ add_action('admin_menu', 'ct_main_menu');
  
 function ct_main_menu(){
         add_menu_page( 'User Activaton', 'User Activaton', 'manage_options', 'ct-user-activation', 'ct_all_member' );
+        add_submenu_page('ct-user-activation', "Executive Serial", "Executive Serial", 'manage_options', "ct-change-executive-serial", "ct_change_executive_serial");
         add_submenu_page(null, "Change Designation", "Change Designation", 'manage_options', "ct-change-designation", "ct_status_designation");
         add_submenu_page(null, "Assign Role", "Assign Role", 'manage_options', "ct-assign-role", "ct_assign_role");
         add_submenu_page(null, "Change Status", "Change Status", 'manage_options', "ct-change-status", "ct_status_change");
 }
 
 
+function ct_change_executive_serial(){
+    if(is_super_admin()){   
+        $message="";
+        if(isset($_POST['submit'])){
+            $serial = "";
+            foreach ($_POST['custom_executive_serial'] as $custom_executive_serial) {
+                $serial .= $custom_executive_serial.',';
+            }            
+            $serial = rtrim($serial,',');
+
+            delete_user_meta(1,'custom_executive_serial');
+            add_user_meta(1,'custom_executive_serial',$serial);  
+            $message = "Serial successfully updated.";      
+        }
+
+
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'usermeta';    
+        $members = $wpdb->get_results( "SELECT * FROM ".$table_name." WHERE meta_value = 'Executive Member' AND meta_key='custom_user_account_type'", OBJECT );
+        $option='<option  selected="true" disabled="disabled"></option>';
+        foreach ($members as $member) {
+            $user_id = $member->user_id;
+            $all_meta_for_user = get_user_meta( $user_id );
+            $option .='<option value="'.$user_id.'"> '.$all_meta_for_user['custom_user_name'][0].' </option>';
+        }
+
+        $position = 1;
+        ?>
+        <div class="wrap">
+            <h2>Select the executive member serial by:</h2>
+            <hr>
+            <?php if($message==""){?>
+            <form action="<?php esc_url( $_SERVER['REQUEST_URI'] );?>" method="post">
+        <?php
+        foreach ($members as $member) {
+        ?>
+                <label for="custom_executive_serial"  ><div class="text-left">Serial: <?php echo $position;?></div></label>
+
+                <div class="form-group">
+                    <select class="form-control" id="custom_executive_serial" name="custom_executive_serial[]" required="required">
+                        <?php echo $option;?>
+                    </select>
+                </div>
+        <?php
+            $position++;
+        }
+        ?>
+                <br>
+                <button type="submit" name="submit" >Submit</button>
+            </form>
+            <?php }else{ ?>
+                <div class="updated notice">
+                    <p><?php echo $message;?></p>
+                </div>
+            <?php } ?>
+
+        </div>
+
+<?php
+    }
+}    
 function ct_assign_role(){
     if(is_super_admin()){
+        
         $message = "";
         if(isset($_POST['submit'])){
             delete_user_meta($_POST['user_id'],'custom_user_account_type');
             foreach ($_POST['role'] as $role) {
                 add_user_meta($_POST['user_id'],'custom_user_account_type',$role);
             }
-            $message = "Designation successfully updated.";
+            $message = "Roles successfully updated.";
         }
+        $current_roles = get_user_meta($_GET['id'], 'custom_user_account_type');
 ?>
 
     <div class="wrap">
@@ -45,11 +109,11 @@ function ct_assign_role(){
               
             <label for="custom_user_designation"  ><div class="text-left">Roles:</div></label>
             <div class="checkbox">
-              <label><input name="role[]" type="checkbox" value="Executive Member">Executive Member</label><br>
-              <label><input name="role[]" type="checkbox" value="Life Time Member">Life Time Member</label><br>
-              <label><input name="role[]" type="checkbox" value="Member">Member</label><br>
-              <label><input name="role[]" type="checkbox" value="Associate Member">Associate Member</label><br>
-              <label><input name="role[]" type="checkbox" value="Primary Member">Primary Member</label>
+              <label><input name="role[]" type="checkbox" value="Executive Member" <?php if(in_array("Executive Member", $current_roles) ){echo 'checked';}?> >Executive Member</label><br>
+              <label><input name="role[]" type="checkbox" value="Life Time Member" <?php if(in_array("Life Time Member", $current_roles) ){echo 'checked';}?>>Life Time Member</label><br>
+              <label><input name="role[]" type="checkbox" value="Member" <?php if(in_array("Member", $current_roles) ){echo 'checked';}?>>Member</label><br>
+              <label><input name="role[]" type="checkbox" value="Associate Member" <?php if(in_array("Associate Member", $current_roles) ){echo 'checked';}?>>Associate Member</label><br>
+              <label><input name="role[]" type="checkbox" value="Primary Member" <?php if(in_array("Primary Member", $current_roles) ){echo 'checked';}?>>Primary Member</label>
             </div>
             <input type="hidden" name="user_id" value="<?php echo $_GET['id'];?>">
             <br>
@@ -68,6 +132,8 @@ function ct_status_designation(){
             update_user_meta( $_POST['user_id'], 'custom_user_designation', $_POST['custom_user_designation']);
             $message = "Designation successfully updated.";
         }
+
+
 ?>
 
     <div class="wrap">
@@ -241,10 +307,10 @@ function ct_all_member(){
             foreach($all_members_array as $all_members_detail){
 
                 if(get_user_meta($all_members_detail->ID, 'custom_is_active', true) == 1){
-                    $html_btn = '<a href="'.admin_url().'?page=ct-change-status&id='.$all_members_detail->ID.'&type=deactivate" class="button button-primary">Deactivate</a>';
+                    $html_btn = '<a href="'.admin_url().'?page=ct-change-status&id='.$all_members_detail->ID.'&type=deactivate" class="button button-primary" style="margin-bottom:2px;">Deactivate</a>';
                     $status = 'Active';
                 }else{
-                    $html_btn = '<a href="'.admin_url().'?page=ct-change-status&id='.$all_members_detail->ID.'&type=active" class="button button-primary">Active</a>';
+                    $html_btn = '<a href="'.admin_url().'?page=ct-change-status&id='.$all_members_detail->ID.'&type=active" class="button button-primary" style="margin-bottom:2px;">Active</a>';
                     $status = 'Inactive';
                 }
 
@@ -252,7 +318,7 @@ function ct_all_member(){
                         'ID'          => $all_members_detail->ID,
                         'Name'        => get_user_meta($all_members_detail->ID, 'custom_user_name', true),
                         'EMAIL'        => $all_members_detail->user_email,
-                        'ROLE'        => get_user_meta($all_members_detail->ID, 'custom_user_account_type', true),
+                        'ROLE'        => implode(", ",get_user_meta($all_members_detail->ID, 'custom_user_account_type')),
                         'STATUS'        => $status,
                         'ACTION'      => $html_btn.'
                         &nbsp;<a target="_blank" href="'.admin_url().'?page=ct-assign-role&id='.$all_members_detail->ID.'" class="button button-primary">Role</a>

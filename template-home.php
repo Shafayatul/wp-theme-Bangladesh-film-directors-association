@@ -125,42 +125,5 @@ get_header();?>
         </div>
       </div>
     </div>
-
-
-    
-
-<!--     <div class="section full-width-portfolio" style="padding-bottom: 0px;border-top:0; border-bottom:0; background:#fff;">
-
-      <div class="big-title text-center" data-animation="fadeInDown" data-animation-delay="01">
-        <h1>Our <strong>Product</strong></h1>
-      </div>
-
-        <div class="container product_div">
-          <div class="portfolio_wrap">
-            <div class="portfolio-box iso-call col-4-space grid cs-style-3" style="position: relative;">
-              <?php 
-                  query_posts(array( 
-                      'post_type' => 'Products',
-                      'showposts' => 100,
-                      'order'     => 'ASC' 
-                  ) );  
-              ?>           
-              <?php while (have_posts()) : the_post(); ?>   
-              <div class="project-post " style="position: absolute;">
-                <figure>
-                  <img alt="" src="<?php echo get_the_post_thumbnail_url();?>">
-                  <figcaption>
-                    <strong>
-                      <a href="<?php echo get_permalink();?>"><?php echo get_the_title();?>
-                      </a>
-                    </strong>
-                  </figcaption>
-                </figure>
-              </div>
-              <?php endwhile;?>
-            </div>
-          </div>
-        </div>  
-    </div> -->
 <?php get_footer();?> 
 

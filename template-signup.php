@@ -92,7 +92,7 @@ $message="";
                 <?php echo $message;?>
                 <input type="text" class="form-control" placeholder="Name" name="user_name" required>
                 <br>
-                <input type="text" class="form-control" placeholder="Email" name="email" required>
+                <input type="email" class="form-control" placeholder="Email" name="email" required>
                 <br>
                 <input type="text" class="form-control" placeholder="Registration Number" name="registration_number" required>
                 <br>

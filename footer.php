@@ -147,12 +147,12 @@
   <!-- Go To Top Link -->
   <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
 
-  <div id="loader">
+<!--   <div id="loader">
     <div class="spinner">
       <div class="dot1"></div>
       <div class="dot2"></div>
     </div>
-  </div>
+  </div> -->
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/script.js"></script>
 
 <?php wp_footer();?> 

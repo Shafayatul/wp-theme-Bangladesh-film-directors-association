@@ -166,7 +166,7 @@ ob_start();
               <i class="fa fa-bars"></i>
             </button>
             <!-- End Toggle Nav Link For Mobiles -->
-            <a class="navbar-brand" href="<?php bloginfo('home');?>">
+            <a class="navbar-brand" href="<?php echo site_url('/home/');?>">
               <img alt="" src="<?php echo get_template_directory_uri(); ?>/images/logo.png" class="small-logo">
               <img alt="" src="<?php echo get_template_directory_uri(); ?>/images/logo-big.jpeg" style="z-index: 100000; position: relative;" class="big-logo">
             </a>
@@ -174,7 +174,7 @@ ob_start();
           <div class="navbar-collapse collapse">
             <!-- Start Navigation List -->
             <br>
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav navbar-right">
               <li class="url_nav">
                 <a class="active home_nav" href="<?php echo site_url('/home/');?>"><b>Home</b></a>
               </li>
@@ -215,15 +215,15 @@ ob_start();
                 <a href="<?php echo site_url('/contact-us/');?>"><b>Contact us</b></a>
               </li>
               <?php if(is_user_logged_in()){ ?>
-              <li>
-                <a class="url_nav my-profile" href="<?php echo site_url('/my-profile/'); ?>"><b>Profile</b></a>
+              <li class="url_nav">
+                <a  href="<?php echo site_url('/my-profile/'); ?>"><b>Profile</b></a>
               </li>
-              <li>
-                <a class="url_nav" href="<?php echo wp_logout_url(site_url('')); ?>"><b>Logout</b></a>
+              <li class="url_nav">
+                <a href="<?php echo wp_logout_url(site_url('')); ?>"><b>Logout</b></a>
               </li>
               <?php }else{ ?>
-              <li>
-                <a class="url_nav" href="<?php echo site_url('/login/'); ?>"><b>Login</b></a>
+              <li class="url_nav">
+                <a href="<?php echo site_url('/login/'); ?>"><b>Login</b></a>
               </li>
               <!-- <li>
                 <a class="url_nav signup" href="<?php echo site_url('/signup/'); ?>"><b>Signup</b></a>
