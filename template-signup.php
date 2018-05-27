@@ -31,7 +31,6 @@ $message="";
             
             add_user_meta( $user_id, 'custom_user_account_type', '');
             add_user_meta( $user_id, 'custom_user_profile_pic', '');
-            add_user_meta( $user_id, 'custom_user_short_bio', '');
             add_user_meta( $user_id, 'custom_user_long_bio', '');
             add_user_meta( $user_id, 'custom_user_about_work', '');
             add_user_meta( $user_id, 'custom_user_youtube', '');
@@ -39,9 +38,10 @@ $message="";
             add_user_meta( $user_id, 'custom_user_facebook_page', '');
             add_user_meta( $user_id, 'custom_user_twitter', '');
             add_user_meta( $user_id, 'custom_user_pinterest', '');
+            add_user_meta( $user_id, 'custom_user_vimeo', '');
+            add_user_meta( $user_id, 'custom_user_personal_website', '');
+            add_user_meta( $user_id, 'custom_user_company_website', '');
 
-            
-                       
 
             // log in after sign in
             //$message = greenClientLogin();
@@ -86,7 +86,7 @@ $message="";
     <br>
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <h1 class="text-center login-title">Sign in to your account</h1>
+            <h1 class="text-center login-title">Sign Up for New Account</h1>
             <div class="account-wall">
                 <form class="form-signin" method="post">
                 <?php echo $message;?>
@@ -111,7 +111,7 @@ $message="";
                     <option value="Primary Member">Primary Member</option>
                   </select>
                 </div> -->
-                <button class="btn btn-lg btn-primary btn-block" type="submit" name="Login">Sign in</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit" name="Login">Sign Up</button>
                 <?php wp_nonce_field( 'hiddent_csrf_check' );?>
                 </form>
             </div>

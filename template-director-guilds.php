@@ -4,36 +4,46 @@ Template Name: Director Guilds
 */
 get_header();
 ?>   
-<!-- <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style2.css" media="screen" type="text/css" > -->
-
-
+<div class="page-banner" style="padding:40px 0; background-color: #12477B; color: white;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+      </div>
+      <div class="col-md-6">
+        <ul class="breadcrumbs">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Members</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>    
 <div class="container">
+
+
   <div class="row">
     <div class="col-md-12">
-      <h2 class="colored-title center-text">Executive Member</h2>
-      <p class="text-center">
-        <a class="btn btn-primary btn-xs " href="<?php echo site_url('/list-view/').'?type=Executive Member';?>">List View</a>
-      </p>
+      <h2 class="colored-title center-text"><a  href="<?php echo site_url('/list-view/').'?type=Executive Member';?>">Executive Member</a></h2>
+      <hr>
     </div>    
+    
     <div class="col-xs-12">
       <div class="carousel slide" id="myCarousel">
         <div class="carousel-inner">
           <?php 
-            // global $wpdb;
-            // $table_name = $wpdb->prefix . 'usermeta';
-            // $members = $wpdb->get_results( "SELECT * FROM ".$table_name." WHERE meta_value = 'Executive Member' AND meta_key='custom_user_account_type'", OBJECT );
             $members = get_user_meta(1,'custom_executive_serial', true);
             $members = explode(',', $members);
+            $cnt = count($members);
+            if ($cnt!=0) {
           ?>
 
           <div class="item item-a active">
             <ul class="thumbnails">  
             <?php     
             $x=1;
-            $cnt = count($members);
-            $finish_required = true;      
-            foreach ($members as $key => $value) {
-              $user_id = $value;
+            $finish_required = true;         
+            foreach ($members as $key => $val) {
+              $user_id = $val;
               if(get_user_meta($user_id, 'custom_is_active', true) == 1){
               $all_meta_for_user = get_user_meta( $user_id );
               $user_info = get_userdata( $user_id );
@@ -42,42 +52,44 @@ get_header();
               <li class="col-sm-3">
                 <div class="fff">
                   <div class="thumbnail">
-                    <a href="#"><img src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt=""></a>
+                    <a href="#">
+                      <?php if(isset($all_meta_for_user['custom_user_profile_pic'][0]) && $all_meta_for_user['custom_user_profile_pic'][0]!=""){?>     
+                        <img style="height: 200px; width: 100%;" src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt="">
+                      <?php }else{ ?>            
+                          <img style="height: 200px; width: 100%;" src="<?php echo get_template_directory_uri(); ?>/images/avatar_2x.png" alt="">          
+                      <?php } ?>                      
+                    </a>
                   </div>
                   <div class="caption">
                     <h4><?php echo $all_meta_for_user['custom_user_name'][0];?></h4>
-                    <?php if(isset($all_meta_for_user['custom_user_designation'][0]) && $all_meta_for_user['custom_user_designation'][0]!=""){?>
-                    <h5><?php echo $all_meta_for_user['custom_user_designation'][0];?></h5>
-                    <?php } ?>
-                    <!-- <p>Nullam Condimentum Nibh Etiam Sem</p> -->
+                    <p><?php echo $all_meta_for_user['custom_user_name'][0];?></p>
                     <p class="text-right">
-                      <a class="btn btn-primary btn-xs " href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Read More</a>
+                      <a class="btn btn-primary btn-xs " href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Detail</a>
                     </p>
                   </div>
                 </div>
               </li>
 
-            <?php
-              if($x%4==0){
-
-            ?>
-              </ul>
-            </div><!-- /Slide1 --> 
-            <?php if($x!=$cnt){ ?>
-              <!-- start new slider -->
-              <div class="item item-a">
-                <ul class="thumbnails">
-            <?php                  
-              }
-              }elseif($x==$cnt){
-            ?>
-              </ul>
-            </div><!-- /Slide1 --> 
-            <?php
-              }
-              $x++;
-            }
+          <?php
+          //last loop
+          if($x==$cnt){
+          ?>
+            </ul>
+          </div><!-- /Slide1 --> 
+          <?php
+          }elseif ($x%4==0) {
+          ?>
+            </ul>
+          </div><!-- /Slide1 --> 
+          <!-- start new slider -->
+          <div class="item item-a">
+            <ul class="thumbnails">          
+          <?php
           }
+          $x++;
+        }
+        }
+      }
           ?>
         </div>
         <nav>
@@ -88,7 +100,13 @@ get_header();
         </nav>
         </div><!-- /#myCarousel -->
       </div><!-- /.col-xs-12 -->    
+      <p class="text-center">
+        <a class="btn btn-primary btn-xs " href="<?php echo site_url('/list-view/').'?type=Life Time Member';?>">View All</a>
+      </p>        
     </div>      <!-- row -->
+
+
+
 
 
     <!-- End of Executive Member -->
@@ -96,11 +114,10 @@ get_header();
 
   <div class="row">
     <div class="col-md-12">
-      <h2 class="colored-title center-text">Life Time Member</h2>
-      <p class="text-center">
-        <a class="btn btn-primary btn-xs " href="<?php echo site_url('/list-view/').'?type=Life Time Member';?>">List View</a>
-      </p>      
+      <h2 class="colored-title center-text"><a  href="<?php echo site_url('/list-view/').'?type=Life Time Member';?>">Life Time Member</a></h2>
+      <hr>
     </div>    
+    
     <div class="col-xs-12">
       <div class="carousel slide" id="myCarousel">
         <div class="carousel-inner">
@@ -108,6 +125,8 @@ get_header();
             global $wpdb;
             $table_name = $wpdb->prefix . 'usermeta';
             $members = $wpdb->get_results( "SELECT * FROM ".$table_name." WHERE meta_value = 'Life Time Member' AND meta_key='custom_user_account_type'", OBJECT );
+            $cnt = count($members);
+            if ($cnt!=0) {
           ?>
 
           <div class="item item-b active">
@@ -126,39 +145,44 @@ get_header();
               <li class="col-sm-3">
                 <div class="fff">
                   <div class="thumbnail">
-                    <a href="#"><img src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt=""></a>
+                    <a href="#">
+                      <?php if(isset($all_meta_for_user['custom_user_profile_pic'][0]) && $all_meta_for_user['custom_user_profile_pic'][0]!=""){?>     
+                        <img style="height: 200px; width: 100%;" src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt="">
+                      <?php }else{ ?>            
+                          <img style="height: 200px; width: 100%;" src="<?php echo get_template_directory_uri(); ?>/images/avatar_2x.png" alt="">          
+                      <?php } ?>                      
+                    </a>
                   </div>
                   <div class="caption">
                     <h4><?php echo $all_meta_for_user['custom_user_name'][0];?></h4>
                     <!-- <p>Nullam Condimentum Nibh Etiam Sem</p> -->
                     <p class="text-right">
-                      <a class="btn btn-primary btn-xs " href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Read More</a>
+                      <a class="btn btn-primary btn-xs " href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Detail</a>
                     </p>
                   </div>
                 </div>
               </li>
 
-            <?php
-              if($x%4==0){
-
-            ?>
-              </ul>
-            </div><!-- /Slide1 --> 
-            <?php if($x!=$cnt){ ?>
-              <!-- start new slider -->
-              <div class="item item-b">
-                <ul class="thumbnails">
-            <?php                  
-              }
-              }elseif($x==$cnt){
-            ?>
-              </ul>
-            </div><!-- /Slide1 --> 
-            <?php
-              }
-              $x++;
-            }
+          <?php
+          //last loop
+          if($x==$cnt){
+          ?>
+            </ul>
+          </div><!-- /Slide1 --> 
+          <?php
+          }elseif ($x%4==0) {
+          ?>
+            </ul>
+          </div><!-- /Slide1 --> 
+          <!-- start new slider -->
+          <div class="item item-b">
+            <ul class="thumbnails">          
+          <?php
           }
+          $x++;
+        }
+        }
+      }
           ?>
         </div>
         <nav>
@@ -169,17 +193,19 @@ get_header();
         </nav>
         </div><!-- /#myCarousel -->
       </div><!-- /.col-xs-12 -->    
+      <p class="text-center">
+        <a class="btn btn-primary btn-xs " href="<?php echo site_url('/list-view/').'?type=Life Time Member';?>">View All</a>
+      </p>        
     </div>      <!-- row -->
 
     <!-- Life Time Member -->
 
   <div class="row">
     <div class="col-md-12">
-      <h2 class="colored-title center-text">Member</h2>
-      <p class="text-center">
-        <a class="btn btn-primary btn-xs " href="<?php echo site_url('/list-view/').'?type=Member';?>">List View</a>
-      </p>      
-    </div>    
+      <h2 class="colored-title center-text"><a href="<?php echo site_url('/list-view/').'?type=Member';?>">Member</a></h2>
+     <hr>
+    </div>   
+     
     <div class="col-xs-12">
       <div class="carousel slide" id="myCarousel">
         <div class="carousel-inner">
@@ -187,6 +213,8 @@ get_header();
             global $wpdb;
             $table_name = $wpdb->prefix . 'usermeta';
             $members = $wpdb->get_results( "SELECT * FROM ".$table_name." WHERE meta_value = 'Member' AND meta_key='custom_user_account_type'", OBJECT );
+            $cnt = count($members);
+            if ($cnt!=0) {
           ?>
 
           <div class="item item-c active">
@@ -205,39 +233,44 @@ get_header();
               <li class="col-sm-3">
                 <div class="fff">
                   <div class="thumbnail">
-                    <a href="#"><img src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt=""></a>
+                    <a href="#">
+                      <?php if(isset($all_meta_for_user['custom_user_profile_pic'][0]) && $all_meta_for_user['custom_user_profile_pic'][0]!=""){?>     
+                        <img style="height: 200px; width: 100%;" src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt="">
+                      <?php }else{ ?>            
+                          <img style="height: 200px; width: 100%;" src="<?php echo get_template_directory_uri(); ?>/images/avatar_2x.png" alt="">          
+                      <?php } ?>                      
+                    </a>
                   </div>
                   <div class="caption">
                     <h4><?php echo $all_meta_for_user['custom_user_name'][0];?></h4>
                     <!-- <p>Nullam Condimentum Nibh Etiam Sem</p> -->
                     <p class="text-right">
-                      <a class="btn btn-primary btn-xs " href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Read More</a>
+                      <a class="btn btn-primary btn-xs " href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Detail</a>
                     </p>
                   </div>
                 </div>
               </li>
 
-            <?php
-              if($x%4==0){
-
-            ?>
-              </ul>
-            </div><!-- /Slide1 --> 
-            <?php if($x!=$cnt){ ?>
-              <!-- start new slider -->
-              <div class="item item-c">
-                <ul class="thumbnails">
-            <?php                  
-              }
-              }elseif($x==$cnt){
-            ?>
-              </ul>
-            </div><!-- /Slide1 --> 
-            <?php
-              }
-              $x++;
-            }
+          <?php
+          //last loop
+          if($x==$cnt){
+          ?>
+            </ul>
+          </div><!-- /Slide1 --> 
+          <?php
+          }elseif ($x%4==0) {
+          ?>
+            </ul>
+          </div><!-- /Slide1 --> 
+          <!-- start new slider -->
+          <div class="item item-c">
+            <ul class="thumbnails">          
+          <?php
           }
+          $x++;
+        }
+        }
+      }
           ?>
         </div>
         <nav>
@@ -247,18 +280,20 @@ get_header();
           </ul>
         </nav>
         </div><!-- /#myCarousel -->
-      </div><!-- /.col-xs-12 -->    
+      </div><!-- /.col-xs-12 -->   
+      <p class="text-center">
+        <a class="btn btn-primary btn-xs " href="<?php echo site_url('/list-view/').'?type=Member';?>">View All</a>
+      </p>        
     </div>      <!-- row -->
 
     <!-- Member -->
 
   <div class="row">
     <div class="col-md-12">
-      <h2 class="colored-title center-text">Associate Member</h2>
-      <p class="text-center">
-        <a class="btn btn-primary btn-xs " href="<?php echo site_url('/list-view/').'?type=Associate Member';?>">List View</a>
-      </p>      
-    </div>    
+      <h2 class="colored-title center-text"><a  href="<?php echo site_url('/list-view/').'?type=Associate Member';?>">Associate Member</a></h2>
+      <hr> 
+    </div>  
+     
     <div class="col-xs-12">
       <div class="carousel slide" id="myCarousel">
         <div class="carousel-inner">
@@ -266,6 +301,8 @@ get_header();
             global $wpdb;
             $table_name = $wpdb->prefix . 'usermeta';
             $members = $wpdb->get_results( "SELECT * FROM ".$table_name." WHERE meta_value = 'Associate Member' AND meta_key='custom_user_account_type'", OBJECT );
+            $cnt = count($members);
+            if ($cnt!=0) {
           ?>
 
           <div class="item item-d active">
@@ -284,39 +321,44 @@ get_header();
               <li class="col-sm-3">
                 <div class="fff">
                   <div class="thumbnail">
-                    <a href="#"><img src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt=""></a>
+                    <a href="#">
+                      <?php if(isset($all_meta_for_user['custom_user_profile_pic'][0]) && $all_meta_for_user['custom_user_profile_pic'][0]!=""){?>     
+                        <img style="height: 200px; width: 100%;" src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt="">
+                      <?php }else{ ?>            
+                          <img style="height: 200px; width: 100%;" src="<?php echo get_template_directory_uri(); ?>/images/avatar_2x.png" alt="">          
+                      <?php } ?>                      
+                    </a>
                   </div>
                   <div class="caption">
                     <h4><?php echo $all_meta_for_user['custom_user_name'][0];?></h4>
                     <!-- <p>Nullam Condimentum Nibh Etiam Sem</p> -->
                     <p class="text-right">
-                      <a class="btn btn-primary btn-xs " href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Read More</a>
+                      <a class="btn btn-primary btn-xs " href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Detail</a>
                     </p>
                   </div>
                 </div>
               </li>
 
-            <?php
-              if($x%4==0){
-
-            ?>
-              </ul>
-            </div><!-- /Slide1 --> 
-            <?php if($x!=$cnt){ ?>
-              <!-- start new slider -->
-              <div class="item item-d">
-                <ul class="thumbnails">
-            <?php                  
-              }
-              }elseif($x==$cnt){
-            ?>
-              </ul>
-            </div><!-- /Slide1 --> 
-            <?php
-              }
-              $x++;
-            }
+          <?php
+          //last loop
+          if($x==$cnt){
+          ?>
+            </ul>
+          </div><!-- /Slide1 --> 
+          <?php
+          }elseif ($x%4==0) {
+          ?>
+            </ul>
+          </div><!-- /Slide1 --> 
+          <!-- start new slider -->
+          <div class="item item-d">
+            <ul class="thumbnails">          
+          <?php
           }
+          $x++;
+        }
+        }
+      }
           ?>
         </div>
         <nav>
@@ -326,18 +368,20 @@ get_header();
           </ul>
         </nav>
         </div><!-- /#myCarousel -->
-      </div><!-- /.col-xs-12 -->    
+      </div><!-- /.col-xs-12 -->
+      <p class="text-center">
+        <a class="btn btn-primary btn-xs " href="<?php echo site_url('/list-view/').'?type=Associate Member';?>">View All</a>
+      </p>              
     </div>      <!-- row -->
 
     <!-- Associate Member -->
 
   <div class="row">
     <div class="col-md-12">
-      <h2 class="colored-title center-text">Primary Member</h2>
-      <p class="text-center">
-        <a class="btn btn-primary btn-xs " href="<?php echo site_url('/list-view/').'?type=Primary Member';?>">List View</a>
-      </p>      
-    </div>    
+      <h2 class="colored-title center-text"><a href="<?php echo site_url('/list-view/').'?type=Primary Member';?>">Primary Member</a></h2>
+      <hr> 
+    </div>   
+    
     <div class="col-xs-12">
       <div class="carousel slide" id="myCarousel">
         <div class="carousel-inner">
@@ -345,13 +389,14 @@ get_header();
             global $wpdb;
             $table_name = $wpdb->prefix . 'usermeta';
             $members = $wpdb->get_results( "SELECT * FROM ".$table_name." WHERE meta_value = 'Primary Member' AND meta_key='custom_user_account_type'", OBJECT );
+            $cnt = count($members);
+            if ($cnt!=0) {
           ?>
 
           <div class="item item-e active">
             <ul class="thumbnails">  
             <?php     
             $x=1;
-            $cnt = count($members);
             $finish_required = true;         
             foreach ($members as $member) {
               $user_id = $member->user_id;
@@ -363,39 +408,44 @@ get_header();
               <li class="col-sm-3">
                 <div class="fff">
                   <div class="thumbnail">
-                    <a href="#"><img src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt=""></a>
+                    <a href="#">
+                      <?php if(isset($all_meta_for_user['custom_user_profile_pic'][0]) && $all_meta_for_user['custom_user_profile_pic'][0]!=""){?>     
+                        <img style="height: 200px; width: 100%;" src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>" alt="">
+                      <?php }else{ ?>            
+                          <img style="height: 200px; width: 100%;" src="<?php echo get_template_directory_uri(); ?>/images/avatar_2x.png" alt="">          
+                      <?php } ?>                      
+                    </a>
                   </div>
                   <div class="caption">
                     <h4><?php echo $all_meta_for_user['custom_user_name'][0];?></h4>
                     <!-- <p>Nullam Condimentum Nibh Etiam Sem</p> -->
                     <p class="text-right">
-                      <a class="btn btn-primary btn-xs " href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Read More</a>
+                      <a class="btn btn-primary btn-xs " href="<?php echo site_url('/user-profile/').'?id='.$user_id;?>">» Detail</a>
                     </p>
                   </div>
                 </div>
               </li>
 
-            <?php
-              if($x%4==0){
-
-            ?>
-              </ul>
-            </div><!-- /Slide1 --> 
-            <?php if($x!=$cnt){ ?>
-              <!-- start new slider -->
-              <div class="item item-e">
-                <ul class="thumbnails">
-            <?php                  
-              }
-              }elseif($x==$cnt){
-            ?>
-              </ul>
-            </div><!-- /Slide1 --> 
-            <?php
-              }
-              $x++;
-            }
+          <?php
+          //last loop
+          if($x==$cnt){
+          ?>
+            </ul>
+          </div><!-- /Slide1 --> 
+          <?php
+          }elseif ($x%4==0) {
+          ?>
+            </ul>
+          </div><!-- /Slide1 --> 
+          <!-- start new slider -->
+          <div class="item item-e">
+            <ul class="thumbnails">          
+          <?php
           }
+          $x++;
+        }
+        }
+      }
           ?>
         </div>
         <nav>
@@ -405,10 +455,11 @@ get_header();
           </ul>
         </nav>
         </div><!-- /#myCarousel -->
-      </div><!-- /.col-xs-12 -->    
+      </div><!-- /.col-xs-12 --> 
+      <p class="text-center">
+        <a class="btn btn-primary btn-xs " href="<?php echo site_url('/list-view/').'?type=Primary Member';?>">View All</a>
+      </p>           
     </div>      <!-- row -->
-
-    <!-- Primary Member -->
 
   </div><!-- /.container -->
 
@@ -459,5 +510,6 @@ get_header();
 
     });
   </script>
+
   <?php get_footer();?> 
 

@@ -13,7 +13,7 @@ get_header();?>
           <div class="col-md-6">
             <ul class="breadcrumbs">
               <li><a href="#">Home</a></li>
-              <li>Contact Us</li>
+              <li><a href="#">Contact Us</a></li>
             </ul>
           </div>
         </div>
@@ -30,7 +30,7 @@ get_header();?>
       // When the user clicks the marker, an info window opens.
 
       function initMap() {
-        var lebanon = {lat:33.848552, lng:35.496445}; 
+        var lebanon = {lat:23.770712, lng:90.411321}; 
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 18,
           center: lebanon
@@ -117,9 +117,9 @@ get_header();?>
 
             <!-- Info - Icons List -->
             <ul class="icons-list">
-              <li><i class="fa fa-globe"  style="color: #fff;">  </i> <strong>Address:</strong> <br> total address</li><br>
-              <li><i class="fa fa-envelope-o"  style="color: #fff;"></i> <strong>Email:</strong> <br> info@domain.com</li><br>
-              <li><i class="fa fa-mobile"  style="color: #fff;"></i> <strong>Phone:</strong> <br> +5465 564 65</li><br>
+              <li><i class="fa fa-globe"  style="color: #fff;">  </i> <strong>Address:</strong> <br> House#110/A, Road # 2, Block # B, Niketon Housing, Gulshan - 1, Dhaka - 1212</li><br>
+              <li><i class="fa fa-envelope-o"  style="color: #fff;"></i> <strong>Email:</strong> <br> info@directorsguildbd.com</li><br>
+              <li><i class="fa fa-mobile"  style="color: #fff;"></i> <strong>Phone:</strong> <br> +88 01733879143</li><br>
             </ul>
 
             <div class="hr1" style="margin-bottom:15px;"></div>

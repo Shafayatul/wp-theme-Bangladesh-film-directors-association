@@ -28,6 +28,7 @@
 
               <!-- Classic Heading -->
               <h4 class="classic-title"><span><?php the_title();?></span></h4>
+              <p style="font-size: 75%; font-weight: bold;"><i>Published at:</i> <?php echo get_the_date();?></p>
               <!-- Some Text -->
               <?php the_content(); ?>
             </div>

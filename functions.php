@@ -30,8 +30,7 @@ function ct_change_executive_serial(){
             }            
             $serial = rtrim($serial,',');
 
-            delete_user_meta(1,'custom_executive_serial');
-            add_user_meta(1,'custom_executive_serial',$serial);  
+            update_user_meta(1,'custom_executive_serial',$serial);  
             $message = "Serial successfully updated.";      
         }
 
@@ -53,20 +52,20 @@ function ct_change_executive_serial(){
             <hr>
             <?php if($message==""){?>
             <form action="<?php esc_url( $_SERVER['REQUEST_URI'] );?>" method="post">
-        <?php
-        foreach ($members as $member) {
-        ?>
-                <label for="custom_executive_serial"  ><div class="text-left">Serial: <?php echo $position;?></div></label>
+                <?php
+                foreach ($members as $member) {
+                ?>
+                        <label for="custom_executive_serial"  ><div class="text-left">Serial: <?php echo $position;?></div></label>
 
-                <div class="form-group">
-                    <select class="form-control" id="custom_executive_serial" name="custom_executive_serial[]" required="required">
-                        <?php echo $option;?>
-                    </select>
-                </div>
-        <?php
-            $position++;
-        }
-        ?>
+                        <div class="form-group">
+                            <select class="form-control" id="custom_executive_serial" name="custom_executive_serial[]" required="required">
+                                <?php echo $option;?>
+                            </select>
+                        </div>
+                <?php
+                    $position++;
+                }
+                ?>
                 <br>
                 <button type="submit" name="submit" >Submit</button>
             </form>
@@ -613,4 +612,19 @@ if (!current_user_can('administrator') && !is_admin()) {
   show_admin_bar(false);
 }
 }
+
+
+
+/*hide wordpress in login page*/
+function my_login_logo() { ?>
+    <style type="text/css">
+        #login h1 a, .login h1 a {
+            display: none;
+        }
+        #login #nav, .login #nav{
+            display: none;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
 ?>

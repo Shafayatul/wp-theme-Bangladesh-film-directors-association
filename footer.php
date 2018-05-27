@@ -69,23 +69,23 @@
               <h4>Follow Us<span class="head-line"></span></h4>
               <ul class="social-icons">
                 <li>
-                  <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+                  <a class="facebook" href="https://www.facebook.com/Directors.guildbd/"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                  <a class="google" href="https://www.youtube.com/channel/UCX_35yaIhi_SbhSRpLAglXw"><i class="fa fa-youtube-play"></i></a>
+                </li>
+<!--                  <li>
+                  <a class="google" href="https://plus.google.com/114330195308861604957"><i class="fa fa-google-plus"></i></a>
                 </li>
                 <li>
                   <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
-                </li>
-                <li>
-                  <a class="google" href="#"><i class="fa fa-google-plus"></i></a>
                 </li>
                 <li>
                   <a class="linkdin" href="#"><i class="fa fa-linkedin"></i></a>
                 </li>
                 <li>
                   <a class="instgram" href="#"><i class="fa fa-instagram"></i></a>
-                </li>
-                <li>
-                  <a class="google" href="#"><i class="fa fa-youtube-play"></i></a>
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>
@@ -96,8 +96,8 @@
           <!-- Start Flickr Widget -->
           <div class="col-md-4 col-xs-12">
             <div class="footer-widget flickr-widget">
-              <h4>Company Slogan<span class="head-line"></span></h4>
-              <p>Bangladesh Film Directors Association</p>
+              <h4>Slogan<span class="head-line"></span></h4>
+              <p>Director's Guild - television Drama Director's Organization</p>
             </div>
           </div>
           <!-- .col-md-3 -->
@@ -109,6 +109,7 @@
             <div class="footer-widget contact-widget">
               <h4>Address<span class="head-line"></span></h4>
               <ul>
+                <li><span>Location:</span>  House: 221, Road: 02, Block: A, Niketon, Gulshan-1.</li>
                 <li><span>Phone Number:</span> +88 01733879143</li>
                 <li><span>Email:</span> info@directorsguildbd.com</li>
                 <li><span>Website:</span> www.directorsguildbd.com</li>
@@ -123,11 +124,14 @@
         <!-- Start Copyright -->
         <div class="copyright-section">
           <div class="row">
+               <div class="col-md-3">
+
+            </div>
             <div class="col-md-6 ">
-              <p class="dev_name">Copyright © 2017 MTS - Designed &amp; Developed by <a href="">Dev team</a></p>
+              <p class="dev_name">Copyright © 2018 Director's Guild - Designed &amp; Developed by <a href="http://www.nurdcoder.com">NurdCoder</a></p>
             </div>
             <!-- .col-md-6 -->
-            <div class="col-md-6">
+            <div class="col-md-3">
 
             </div>
             <!-- .col-md-6 -->

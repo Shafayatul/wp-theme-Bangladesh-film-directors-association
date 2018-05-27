@@ -9,7 +9,8 @@
           </div>
           <div class="col-md-6">
             <ul class="breadcrumbs">
-              <li><?php the_title();?></li>
+              <li><a href="#">Home</a></li>
+              <li><a><?php the_title();?></a></li>
             </ul>
           </div>
         </div>

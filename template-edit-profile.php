@@ -18,7 +18,6 @@ $user_info = get_userdata( $user_id );
       update_user_meta( $user_id, 'custom_user_name', $_POST['custom_user_name']);
       update_user_meta( $user_id, 'custom_user_phone', $_POST['custom_user_phone']);
       update_user_meta( $user_id, 'custom_user_registration_number', $_POST['custom_user_registration_number']);
-      update_user_meta( $user_id, 'custom_user_short_bio', $_POST['custom_user_short_bio']);
       update_user_meta( $user_id, 'custom_user_long_bio', $_POST['custom_user_long_bio']);
       update_user_meta( $user_id, 'custom_user_about_work', $_POST['custom_user_about_work']);
       update_user_meta( $user_id, 'custom_user_youtube', $_POST['custom_user_youtube']);
@@ -26,6 +25,9 @@ $user_info = get_userdata( $user_id );
       update_user_meta( $user_id, 'custom_user_facebook_page', $_POST['custom_user_facebook_page']);
       update_user_meta( $user_id, 'custom_user_twitter', $_POST['custom_user_twitter']);
       update_user_meta( $user_id, 'custom_user_pinterest', $_POST['custom_user_pinterest']);
+      update_user_meta( $user_id, 'custom_user_vimeo', $_POST['custom_user_vimeo']);
+      update_user_meta( $user_id, 'custom_user_personal_website', $_POST['custom_user_personal_website']);
+      update_user_meta( $user_id, 'custom_user_company_website', $_POST['custom_user_company_website']);
 
       //check the file empty or not
       if(isset($_FILES['custom_user_profile_pic']) && ($_FILES['custom_user_profile_pic']['size'] > 0)) {
@@ -49,6 +51,9 @@ $user_info = get_userdata( $user_id );
               echo 'This is not a image';
             }else{    
               if(move_uploaded_file($_FILES['custom_user_profile_pic']["tmp_name"],ABSPATH . "wp-content/uploads/profile_pic/" . $_FILES['custom_user_profile_pic']["name"])){
+
+                unlink(ABSPATH . "wp-content/uploads/profile_pic/".$all_meta_for_user['custom_user_profile_pic'][0]);
+
                 rename(ABSPATH . "wp-content/uploads/profile_pic/$image_name",ABSPATH . "wp-content/uploads/profile_pic/$image_name_next");
                 // update the image
                 update_user_meta( $user_id, 'custom_user_profile_pic', $image_name_next);
@@ -80,7 +85,7 @@ $user_info = get_userdata( $user_id );
       <div class="col-md-6">
         <ul class="breadcrumbs">
           <li><a href="#">Home</a></li>
-          <li>Edit Account</li>
+          <li><a href="#">Edit Account</a></li>
         </ul>
       </div>
     </div>
@@ -124,15 +129,9 @@ $user_info = get_userdata( $user_id );
             </div>
           </div>
   
-  
+
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">Short Bio</label>
-            <div class="col-sm-10">
-              <textarea class="form-control" name="custom_user_short_bio"><?php echo $all_meta_for_user['custom_user_short_bio'][0];?></textarea>
-            </div>
-          </div>  
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">Long Bio</label>
+            <label class="col-sm-2 control-label" for="textinput">Biography</label>
             <div class="col-sm-10">
               <textarea class="form-control" name="custom_user_long_bio"><?php echo $all_meta_for_user['custom_user_long_bio'][0];?></textarea>
             </div>
@@ -178,6 +177,24 @@ $user_info = get_userdata( $user_id );
             <div class="col-sm-10">
               <input type="text" name="custom_user_pinterest" value="<?php echo $all_meta_for_user['custom_user_pinterest'][0];?>" class="form-control">
             </div>
+          </div>          
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="textinput">Vimeo</label>
+            <div class="col-sm-10">
+              <input type="text" name="custom_user_vimeo" value="<?php echo $all_meta_for_user['custom_user_vimeo'][0];?>" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="textinput">Personal Website</label>
+            <div class="col-sm-10">
+              <input type="text" name="custom_user_personal_website" value="<?php echo $all_meta_for_user['custom_user_personal_website'][0];?>" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="textinput">Company Website</label>
+            <div class="col-sm-10">
+              <input type="text" name="custom_user_company_website" value="<?php echo $all_meta_for_user['custom_user_company_website'][0];?>" class="form-control">
+            </div>
           </div>
 
           <div class="form-group">
@@ -212,5 +229,10 @@ $user_info = get_userdata( $user_id );
   </div><!-- /.row -->
 </div>
 
-
+<script type="text/javascript">
+  jQuery(document).ready(function(){
+    jQuery('.url_nav>a').removeClass('active');
+    jQuery('.profile-page').addClass('active');
+  });
+</script>
 <?php get_footer();?> 

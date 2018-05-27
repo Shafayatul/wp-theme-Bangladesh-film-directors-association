@@ -3,6 +3,7 @@
 Template Name: Home
 */
 get_header();?> 
+
 <?php if(have_posts()) : ?><?php while(have_posts())  : the_post(); ?>    
 <?php endwhile; ?>
 <?php else : ?>
@@ -17,36 +18,68 @@ get_header();?>
           <br>
         </div>
       </div>
+
       <div class="row">
         <div class="col-md-9">
           <!-- Slider -->
-          <div class="row">
+          <div class="row" id="slider-home-id">
             <div class="col-md-12">
               <?php echo do_shortcode('[metaslider id="23"]'); ?>           
             </div>
           </div> <!-- slider row -->
-
-          <br>
-          <!-- YOutube links -->
+        </div>
+        <div class="col-md-3">
+          <!-- News -->
           <div class="row">
             <div class="col-md-12">
-              <h2 class="colored-title center-text">Youtube Links</h2>
+              <div class="side-bar-section">
+                <div class="title-side-bar" id="news-feed-title">
+                  <a href="<?php echo site_url('/news/');?>" style="color: white;">News Feed</a>
+                </div>
+                <div id="news-feed" style="overflow-y: scroll;">             
+                  <?php 
+                      query_posts(array( 
+                          'post_type' => 'News',
+                          'showposts' => 10,
+                          'order'     => 'DESC' 
+                      ) );  
+                  ?>           
+                  <?php while (have_posts()) : the_post(); ?> 
+                  <span class="single-sidebar-news">
+                    <a href="<?php echo get_permalink();?>">
+                      <h5 style="color: #12477B;"><?php echo get_the_title();?></h5>
+                      <p style="font-size: 75%; font-weight: bold;"><i>Published at:</i> <?php echo get_the_date();?></p>
+                    </a>
+                  </span>
+                  <?php endwhile;?>
+                </div>   
+                
+              </div>
             </div>
-            <div class="col-md-12">
-              <?php echo do_shortcode('[wonderplugin_carousel id="1"]'); ?>
-            </div>
-          </div> <!-- youtube row ends -->
+          </div> <!-- News row ends -->
+        </div>
+      </div>
+
+      <div class="row" style="padding-bottom: 20px">
+        <br>
+        <br>
+        <div class="col-md-9">
+          <h2 class="colored-title center-text">
+            <a href="<?php echo site_url('/events/');?>" style="color: #12477B;">Recent Events</a>
+          </h2>          
+        </div>
+        <div class="col-md-3">
+        </div>
+        <br>
+      </div>
 
 
-          <br>
-          <!-- Event links -->
+
+
+      <div class="row">
+        <div class="col-md-9" id="second-row-left">
+          <!-- Slider -->
           <div class="row">
-            <div class="col-md-12">
-              <h2 class="colored-title center-text">Recent Events</h2>
-              <br>
-            </div>
-
-
             <?php 
                 query_posts(array( 
                     'post_type' => 'Events',
@@ -58,7 +91,7 @@ get_header();?>
               <div class="col-md-4">
                 <div class="thumbnail">
                   <a href="<?php echo get_permalink();?>">
-                    <img src="<?php echo get_the_post_thumbnail_url();?>" alt="Lights" style="width:100%">
+                    <img style="height: 200px; width: 100%;"  src="<?php echo get_the_post_thumbnail_url();?>" alt="Lights" style="width:100%">
                     <div class="caption">
                       <p><?php echo get_the_title();?></p>
                     </div>
@@ -66,64 +99,63 @@ get_header();?>
                 </div>
               </div>
             <?php endwhile;?>
+          </div> <!-- slider row -->
 
-
-          </div> <!-- Event row ends -->
-
-
+          <!-- YOutube links -->
+          <div class="row">
+            <div class="col-md-12">
+              <h2 class="colored-title center-text">Youtube Links</h2>
+            </div>
+            <div class="col-md-12">
+              <?php echo do_shortcode('[wonderplugin_carousel id="1"]'); ?>
+            </div>
+          </div> <!-- youtube row ends -->          
         </div>
         <div class="col-md-3">
-          <!-- News -->
           <div class="row">
             <div class="col-md-12">
               <div class="side-bar-section">
                 <div class="title-side-bar">
-                  News Feed
+                  <a href="<?php echo site_url('/notice/');?>" style="color: white;">Notice Board</a>
                 </div>
-                <?php 
-                    query_posts(array( 
-                        'post_type' => 'News',
-                        'showposts' => 10,
-                        'order'     => 'DESC' 
-                    ) );  
-                ?>           
-                <?php while (have_posts()) : the_post(); ?> 
-                <span class="single-sidebar-news"><a href="<?php echo get_permalink();?>"><?php echo get_the_title();?></a></span>
-                <?php endwhile;?>
-                
-              </div>
-            </div>
-          </div> <!-- News row ends -->
-
-          <br>
-          <br>
-          <br>
-
-          <!-- Events -->
-          <div class="row">
-            <div class="col-md-12">
-              <div class="side-bar-section">
-                <div class="title-side-bar">
-                  Notice Board
+                <div id="notice-feed" style="overflow-y: scroll;">
+                  <?php 
+                      query_posts(array( 
+                          'post_type' => 'Notice',
+                          'showposts' => 10,
+                          'order'     => 'DESC' 
+                      ) );  
+                  ?>           
+                  <?php while (have_posts()) : the_post(); ?> 
+                  <span class="single-sidebar-news">
+                    <a href="<?php echo get_permalink();?>">
+                      <h5 style="color: #12477B;"><?php echo get_the_title();?></h5>
+                      <p style="font-size: 75%; font-weight: bold;"><i>Published at:</i> <?php echo get_the_date();?></p>
+                    </a>
+                  </span>
+                  <?php endwhile;?>
                 </div>
-                <?php 
-                    query_posts(array( 
-                        'post_type' => 'Notice',
-                        'showposts' => 10,
-                        'order'     => 'DESC' 
-                    ) );  
-                ?>           
-                <?php while (have_posts()) : the_post(); ?> 
-                <span class="single-sidebar-news"><a href="<?php echo get_permalink();?>"><?php echo get_the_title();?></a></span>
-                <?php endwhile;?>
-                
               </div>
             </div>
           </div> <!-- Event row ends -->
-
-
         </div>
       </div>
-    </div>
+      <br><br><br>
+    </div> <!-- end of container -->
+
+<script type="text/javascript">
+  jQuery(document).ready(function(){
+    // alert(); px
+    if(jQuery( window ).width() >= 992){
+      var height_news_feed = parseInt(jQuery('#slider-home-id').height()) - parseInt(jQuery('#news-feed-title').height())- 22;
+      jQuery('#news-feed').css('height', height_news_feed+'px');
+      
+      var height_notice_feed = parseInt(jQuery('#second-row-left').height()) - 45;
+      jQuery('#notice-feed').css('height', height_notice_feed+'px');
+      
+
+    }
+  });
+</script>    
 <?php get_footer();?> 
 

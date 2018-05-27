@@ -20,7 +20,7 @@ $user_info = get_userdata( $user_id );
       <div class="col-md-6">
         <ul class="breadcrumbs">
           <li><a href="#">Home</a></li>
-          <li>User Profile</li>
+          <li><a href="#">User Profile</a></li>
         </ul>
       </div>
     </div>
@@ -41,7 +41,7 @@ $user_info = get_userdata( $user_id );
           ?>
             <img  src="<?php echo get_site_url().'/wp-content/uploads/profile_pic/'.$all_meta_for_user['custom_user_profile_pic'][0];?>"   id="profile-image1" class="img-responsive img-thumbnail"></td>
           <?php }else{ ?>  
-           <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive"> 
+           <img alt="User Pic" src="<?php echo get_template_directory_uri(); ?>/images/avatar_2x.png" id="profile-image1" class="img-circle img-responsive"> 
           <?php } ?>
          
      
@@ -69,12 +69,9 @@ $user_info = get_userdata( $user_id );
                 <?php if(isset($all_meta_for_user['custom_user_account_type'][0]) && $all_meta_for_user['custom_user_account_type'][0]!=""){?>             
                 <p><b>Account Type: </b><?php echo implode(", ",$all_meta_for_user['custom_user_account_type']);?></p>
                 <?php } ?>
-                <?php if(isset($all_meta_for_user['custom_user_short_bio'][0]) && $all_meta_for_user['custom_user_short_bio'][0]!=""){?>
-                <p><b>Short Bio: </b><?php echo $all_meta_for_user['custom_user_short_bio'][0];?></p>
-                <?php } ?>
 
                 <?php if(isset($all_meta_for_user['custom_user_long_bio'][0]) && $all_meta_for_user['custom_user_long_bio'][0]!=""){?>             
-                <p><b>Long Bio: </b><?php echo $all_meta_for_user['custom_user_long_bio'][0];?></p>
+                <p><b>Biography: </b><?php echo $all_meta_for_user['custom_user_long_bio'][0];?></p>
                 <?php } ?>
 
                 <?php if(isset($all_meta_for_user['custom_user_about_work'][0]) && $all_meta_for_user['custom_user_about_work'][0]!=""){?>             
@@ -103,11 +100,30 @@ $user_info = get_userdata( $user_id );
                       <a class="twitter itl-tooltip" data-placement="bottom" title="" href="<?php echo $all_meta_for_user['custom_user_twitter'][0];?>" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
                   <?php } ?>
+                  
                   <?php if(isset($all_meta_for_user['custom_user_pinterest'][0]) && $all_meta_for_user['custom_user_pinterest'][0]!=""){?>  
                     <li>
                       <a class="google itl-tooltip" data-placement="bottom" title="" href="<?php echo $all_meta_for_user['custom_user_pinterest'][0];?>" data-original-title="Pinterest"><i class="fa fa-pinterest-p"></i></a>
                     </li>
                   <?php } ?>   
+            
+                  <?php if(isset($all_meta_for_user['custom_user_vimeo'][0]) && $all_meta_for_user['custom_user_vimeo'][0]!=""){?>  
+                    <li>
+                      <a class="google itl-tooltip" data-placement="bottom" title="" href="<?php echo $all_meta_for_user['custom_user_vimeo'][0];?>" data-original-title="vimeo"><i class="fa fa-vimeo"></i></a>
+                    </li>
+                  <?php } ?>   
+                                               
+                  <?php if(isset($all_meta_for_user['custom_user_personal_website'][0]) && $all_meta_for_user['custom_user_personal_website'][0]!=""){?>  
+                    <li>
+                      <a class="google itl-tooltip" data-placement="bottom" title="" href="<?php echo $all_meta_for_user['custom_user_personal_website'][0];?>" data-original-title="Personal website"><i class="fa fa-rss"></i></a>
+                    </li>
+                  <?php } ?>   
+                                               
+                  <?php if(isset($all_meta_for_user['custom_user_company_website'][0]) && $all_meta_for_user['custom_user_company_website'][0]!=""){?>  
+                    <li>
+                      <a class="google itl-tooltip" data-placement="bottom" title="" href="<?php echo $all_meta_for_user['custom_user_company_website'][0];?>" data-original-title="Company"><i class="fa fa-rss"></i></a>
+                    </li>
+                  <?php } ?>      
                                             
                 </ul>
           </div>
@@ -115,4 +131,10 @@ $user_info = get_userdata( $user_id );
     </div>
 </div>
 </div>
+<script type="text/javascript">
+  jQuery(document).ready(function(){
+    jQuery('.url_nav>a').removeClass('active');
+    // jQuery('.member-page').addClass('active');
+  });
+</script>
 <?php get_footer();?> 

@@ -47,9 +47,14 @@ $message="";
     <br>
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <h1 class="text-center login-title">Sign in to your account</h1>
             <div class="account-wall">
-                <form class="form-signin" method="post">
+              <h1 class="text-center login-title">Sign in to your account</h1>
+              <form class="form-signin" method="post">
+                <div class="row">
+                  <div class="col-sm-12 text-center">
+                    <img id="profile-img" class="img-circle" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                  </div>
+                </div>
                 <?php echo $message;?>
                 <input type="text" class="form-control" placeholder="Email" name="user_email" required autofocus>
                 <br>
@@ -60,10 +65,9 @@ $message="";
                     <input type="checkbox" value="1" name="remember">
                     Remember me
                 </label>
-                <!-- <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span> -->
-                </form>
+                <a href="<?php echo wp_lostpassword_url(); ?>" class="pull-right need-help">Forgot Password? </a><span class="clearfix"></span>
+              </form>
             </div>
-            <a href="#" class="text-center new-account">Create an account </a>
         </div>
     </div>
 </div>

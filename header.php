@@ -9,7 +9,7 @@ ob_start();
 <head>
 
   <!-- Basic -->
-  <title><?php bloginfo('name'); ?></title>
+  <title>Director's Guild - Television Drama Director's Organization</title>
 
   <!-- Define Charset -->
   <meta charset="utf-8">
@@ -73,25 +73,27 @@ ob_start();
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.slicknav.js"></script> 
 
 
-  <!-- Slider -->
-<!--   <script src="<?php echo get_template_directory_uri(); ?>/src/skdslider.js"></script>
-  <link href="<?php echo get_template_directory_uri(); ?>/src/skdslider.css" rel="stylesheet">
-  <script type="text/javascript">
-      jQuery(document).ready(function(){
-        
-        jQuery('#demo1').skdslider({delay:5000, animationSpeed: 2000,showNextPrev:true,showPlayButton:true,autoSlide:true,animationType:'fading'
-        });
+<style>
+/* width */
+::-webkit-scrollbar {
+    width: 3px;
+}
 
-        jQuery('#responsive').change(function(){
-          $('#responsive_wrapper').width(jQuery(this).val());
-          $(window).trigger('resize');
-        });
-        
-      });
-  </script>   -->   
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
  
-  <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #12477B; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+</style>
 
 
   <!-- custom css -->
@@ -127,9 +129,9 @@ ob_start();
               <!-- Start Social Links -->
               <ul class="social-list">
                 <li>
-                  <a class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="#"><i class="fa fa-facebook"></i></a>
+                  <a class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="https://www.facebook.com/Directors.guildbd/"><i class="fa fa-facebook"></i></a>
                 </li>
-                <li>
+                <!-- <li>
                   <a class="twitter itl-tooltip" data-placement="bottom" title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
                 </li>
                 <li>
@@ -140,9 +142,9 @@ ob_start();
                 </li>  
                 <li>
                   <a class="instgram itl-tooltip" data-placement="bottom" title="Instagram" href="#"><i class="fa fa-instagram"></i></a>
-                </li> 
+                </li> --> 
                 <li>
-                  <a class="google itl-tooltip" data-placement="bottom" title="Youtube" href="#"><i class="fa fa-youtube-play"></i></a>
+                  <a class="google itl-tooltip" data-placement="bottom" title="Youtube" href="https://www.youtube.com/channel/UCX_35yaIhi_SbhSRpLAglXw"><i class="fa fa-youtube-play"></i></a>
                 </li>                                             
               </ul>
               <!-- End Social Links -->
@@ -178,14 +180,15 @@ ob_start();
               <li class="url_nav">
                 <a class="active home_nav" href="<?php echo site_url('/home/');?>"><b>Home</b></a>
               </li>
-
-              <li class="url_nav">
-                <a href="<?php echo site_url('/director-guilds/');?>"><b>Members</b></a>
-              </li>
-
               <li class="url_nav">
                 <a href="<?php echo site_url('/history/');?>"><b>History</b></a>
               </li>
+              <li class="url_nav">
+                <a href="<?php echo site_url('/about-us/');?>"><b>About us</b></a>
+              </li> 
+              <li class="url_nav">
+                <a class="member-page" href="<?php echo site_url('/members/');?>"><b>Members</b></a>
+              </li>              
               <li class="url_nav">
                 <a href="<?php echo site_url('/journal/');?>"><b>Journal</b></a>
               </li>
@@ -194,29 +197,16 @@ ob_start();
               </li>
               <li class="url_nav">
                 <a href="<?php echo site_url('/events/');?>"><b>Events</b></a>
-              </li>              
+              </li>                      
               <li class="url_nav">
                 <a href="<?php echo site_url('/gallery/');?>"><b>Gallery</b></a>
               </li>
-
-
-
-
-<!--               <li class="url_nav">
-                <a href="<?php echo site_url('/cv-upload/');?>"><b>Careers</b></a>
-                 <ul class="dropdown">
-                  <li><a href="<?php echo site_url('/cv-upload/');?>"><b>Upload cv</b></a></li>
-                </ul>          
-              </li> -->
-              <li class="url_nav">
-                <a href="<?php echo site_url('/about-us/');?>"><b>About us</b></a>
-              </li>              
               <li class="url_nav">
                 <a href="<?php echo site_url('/contact-us/');?>"><b>Contact us</b></a>
               </li>
               <?php if(is_user_logged_in()){ ?>
               <li class="url_nav">
-                <a  href="<?php echo site_url('/my-profile/'); ?>"><b>Profile</b></a>
+                <a class="profile-page" href="<?php echo site_url('/my-profile/'); ?>"><b>Profile</b></a>
               </li>
               <li class="url_nav">
                 <a href="<?php echo wp_logout_url(site_url('')); ?>"><b>Logout</b></a>
@@ -225,6 +215,12 @@ ob_start();
               <li class="url_nav">
                 <a href="<?php echo site_url('/login/'); ?>"><b>Login</b></a>
               </li>
+<!--               <li class="url_nav">
+                <a href="<?php echo site_url('/cv-upload/');?>"><b>Careers</b></a>
+                 <ul class="dropdown">
+                  <li><a href="<?php echo site_url('/cv-upload/');?>"><b>Upload cv</b></a></li>
+                </ul>          
+              </li> -->              
               <!-- <li>
                 <a class="url_nav signup" href="<?php echo site_url('/signup/'); ?>"><b>Signup</b></a>
               </li> -->
@@ -241,13 +237,14 @@ ob_start();
           <li>
             <a class="menu-new-style active home_nav"   href="<?php echo site_url('/home/');?>">Home</a>
           </li>
-
-          <li>
-            <a class="menu-new-style" href="<?php echo site_url('/director-guilds/');?>">Members</a>
-          </li>
-
           <li>
             <a class="menu-new-style" href="<?php echo site_url('/history/');?>">History</a>
+          </li>
+          <li>
+            <a class="menu-new-style" href="<?php echo site_url('/about-us/');?>">About us</a>
+          </li>             
+          <li>
+            <a class="menu-new-style" href="<?php echo site_url('/members/');?>">Members</a>
           </li>
           <li>
             <a class="menu-new-style" href="<?php echo site_url('/journal/');?>">Journal</a>
@@ -261,16 +258,6 @@ ob_start();
           <li>
             <a class="menu-new-style" href="<?php echo site_url('/gallery/');?>">Gallery</a>
           </li>
-
-<!--           <li>
-            <a class="menu-new-style" href="<?php echo site_url('/cv-upload/');?>">Careers</a>
-            <ul class="dropdown">
-              <li><a class="menu-new-style" href="<?php echo site_url('/cv-upload/');?>">Upload cv</a></li>
-            </ul>                
-          </li> -->
-          <li>
-            <a class="menu-new-style" href="<?php echo site_url('/about-us/');?>">About us</a>
-          </li>          
           <li>
             <a class="menu-new-style" href="<?php echo site_url('/contact-us/');?>">Contact us</a>
           </li>
@@ -285,6 +272,13 @@ ob_start();
           <li>
             <a class="menu-new-style" href="<?php echo site_url('/login/'); ?>">Login</a>
           </li>
+
+<!--           <li>
+            <a class="menu-new-style" href="<?php echo site_url('/cv-upload/');?>">Careers</a>
+            <ul class="dropdown">
+              <li><a class="menu-new-style" href="<?php echo site_url('/cv-upload/');?>">Upload cv</a></li>
+            </ul>                
+          </li> -->          
           <!-- <li>
             <a class="menu-new-style" href="<?php echo site_url('/signup/'); ?>">Signup</a>
           </li> -->
